@@ -1,0 +1,1 @@
+Pocket Scale Calculator v.0.6

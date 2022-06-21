@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CommandString</key>
+	<string>java -jar %pocket-scale-calc .jar file location%</string>
+	<key>Font</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA15TRk1v
+	bm8tUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkbWE5TT2Jq
+	ZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKOos7zDxgAAAAAAAAEBAAAAAAAAABwAAAAA
+	AAAAAAAAAAAAAADP
+	</data>
+	<key>FontAntialias</key>
+	<true/>
+	<key>FontWidthSpacing</key>
+	<real>1.004032258064516</real>
+	<key>ProfileCurrentVersion</key>
+	<real>2.0699999999999998</real>
+	<key>RunCommandAsShell</key>
+	<false/>
+	<key>ShowActiveProcessArgumentsInTitle</key>
+	<true/>
+	<key>ShowActiveProcessInTitle</key>
+	<false/>
+	<key>ShowRepresentedURLInTitle</key>
+	<false/>
+	<key>ShowShellCommandInTitle</key>
+	<false/>
+	<key>ShowWindowSettingsNameInTitle</key>
+	<true/>
+	<key>columnCount</key>
+	<integer>47</integer>
+	<key>name</key>
+	<string>pocket scale calculator</string>
+	<key>noWarnProcesses</key>
+	<array>
+		<dict>
+			<key>ProcessName</key>
+			<string>tmux</string>
+		</dict>
+	</array>
+	<key>rowCount</key>
+	<integer>39</integer>
+	<key>type</key>
+	<string>Window Settings</string>
+</dict>
+</plist>
