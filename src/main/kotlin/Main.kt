@@ -1,53 +1,53 @@
 import kotlin.system.exitProcess
 
-// options
 var rootKey = DEFAULT_ROOT_KEY
 var scale = DEFAULT_SCALE
 var snapOffHanger = false
 var poModel = PocketOperators.PO_33
 
 fun main(appArgs: Array<String>) {
-    initUI()
+    printInitSection()
 
     rootKey = getRootKey(appArgs)
     scale = getScale(appArgs)
     snapOffHanger = getSnapOffHangerOption(appArgs)
     poModel = getPOModelOption(appArgs)
 
-    prepareTransposedNotesArray().calcUI()
+    prepareTransposedNotesArray().printCalculationsModule()
 
     while (true) {
-        inputUI("Input scale or press enter for help: ")
+        printInputSection("Input scale or press enter for help: ")
         val inputArgs = readln().split(" ").toTypedArray()
 
         when (inputArgs[0].lowercase()) {
             "exit", "quit", "off", "terminate" -> {
-                terminateUI()
+                printTerminateSection()
                 exitProcess(0)
             }
-            "", "help", "tutorial", "description" -> descriptionUI()
+            "", "help", "tutorial", "description" -> printDescriptionModule()
             "options" -> {
-                optionsUI()
-                inputUI("Snap off hanger? (y/n): ")
+                printOptionsSection()
+                printInputSection("Snap off hanger? (y/n): ")
                 snapOffHanger = readln().lowercase().indexOf(YES_SHORTCUT) > -1
-                okUI()
-                inputUI("Pocket operator model? (33/35): ")
+                printOkSection()
+                printInputSection("Pocket operator model? (33/35): ")
                 poModel = if (readln().lowercase().indexOf(PocketOperators.PO_35.modelIndex) > -1) {
                     PocketOperators.PO_35
                 } else {
                     PocketOperators.PO_33
                 }
-                okUI()
+                printOkSection()
             }
-            "info", "about" -> aboutUI()
+            "support", "donate" -> printSupportModule()
+            "info", "about" -> printAboutModule()
             else -> {
                 rootKey = getRootKey(inputArgs)
                 scale = getScale(inputArgs)
 
                 if (notes.indexOf(rootKey.dropOctave()) == -1) {
-                    errorMessageUI("Input [$rootKey] is unrecognised, please try again")
+                    printErrorMessage("Input [$rootKey] is unrecognised, please try again")
                 } else {
-                    prepareTransposedNotesArray().calcUI()
+                    prepareTransposedNotesArray().printCalculationsModule()
 
                 }
             }

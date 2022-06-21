@@ -1,40 +1,40 @@
 
-fun initUI() {
+fun printInitSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@@@ ON @@@@@@@@@@@@@@@@@@@  ")
 }
 
-fun terminateUI() {
+fun printTerminateSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@@ OFF @@@@@@@@@@@@@@@@@@@  ")
     println("")
 }
 
-fun okUI() {
+fun printOkSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@@@ OK @@@@@@@@@@@@@@@@@@@  ")
     println("")
 }
 
-fun errorUI() {
+fun printErrorSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@ ERROR @@@@@@@@@@@@@@@@@@  ")
     println("")
 }
 
-fun endSectionUI() {
+fun printEndSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  ")
     println("")
 }
 
-fun errorMessageUI(errorMessage: String) {
-    errorUI()
+fun printErrorMessage(errorMessage: String) {
+    printErrorSection()
     println(errorMessage)
-    endSectionUI()
+    printEndSection()
 }
 
-fun descriptionUI() {
+fun printDescriptionModule() {
     println("")
     println("  @@@@@@@@@@@@@@@ DESCRIPTION @@@@@@@@@@@@@@@  ")
     println("")
@@ -68,35 +68,48 @@ fun descriptionUI() {
     println("next to the 'java -jar %file loc%' run command:")
     println("1:root note, 2:scale, 3:snap off hanger (y/n),")
     println("4:PO model (33/35). For example: F MajP Y 35")
-    println("will start app with F Major Pentatonic, missing")
-    println("hanger option and PO model set to PO-35.")
-    endSectionUI()
+    println("will start app with F Major Pentatonic setting,")
+    println("missing hanger option and PO-35 model UI.")
+    printEndSection()
 }
 
-fun optionsUI() {
+fun printOptionsSection() {
     println("")
     println("  @@@@@@@@@@@@@@@@@ OPTIONS @@@@@@@@@@@@@@@@@  ")
     println("")
 }
 
-fun aboutUI() {
+fun printAboutModule() {
     println("")
     println("  @@@@@@@@@@@@@@@@@@ ABOUT @@@@@@@@@@@@@@@@@@  ")
     println("")
     println("  Pocket Scale Calculator. App version: $APP_VERSION")
     println("For Teenage Engineering PO-33 / PO-133 and, ")
     println("partially, PO-35 / PO-137 series (Minor only)")
+    println("https://teenage.engineering/products/po")
     println("Inspired by www.punkyv4n.me/po-33-scale-app")
     println("Dev: Nikita Bogdan  Email: nikita.bogdan@me.com")
-    endSectionUI()
+    println("github.com/nikitabogdan/pocket-scale-calculator")
+    printSupportModule()
 }
 
-fun inputUI(message: String) {
+fun printSupportModule() {
+    println("")
+    println("  @@@@@@@@@@@@@@@@@ SUPPORT @@@@@@@@@@@@@@@@@  ")
+    println("")
+    println("If you enjoyed Pocket Scale Calculator, you can")
+    println("support development of the next app versions.")
+    println("Donations could be accepted to the following ")
+    println("xrp address: rD8aqf3YcxYZ3Lzv9vuoqeTfmgb4e7TdXm")
+    printEndSection()
+}
+
+fun printInputSection(message: String) {
     print(message)
 }
 
-fun Array<String>.calcUI() {
-    println(calcDraft()
+fun Array<String>.printCalculationsModule() {
+    println(calculationsDraft()
         .replace(DEVICE_PLACEHOLDER, poModel.displayName)
         .replace(PO_SCALE_PLACEHOLDER, getDeviceScale())
         .replace(SCALE_NAME_PLACEHOLDER, getScaleName())
@@ -120,7 +133,7 @@ fun Array<String>.calcUI() {
     )
 }
 
-fun calcDraft() = if (snapOffHanger) {
+fun calculationsDraft() = if (snapOffHanger) {
     "                                               \n" +
             "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
 } else {
