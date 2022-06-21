@@ -5,6 +5,13 @@ It was inspired by [https://punkyv4n.me/po-33-scale-app](https://punkyv4n.me/po-
 
 <img width="733" alt="terminal profile icon" src="https://user-images.githubusercontent.com/107914638/174764479-71575b0c-8d04-44ac-a7aa-f6825d45ce23.png">
 
+Currently supported scales are:
+* Minor (Natural, Harmonic & Pentatonic)
+* Major (Natural, Harmonic & Pentatonic)
+* Blues
+* Dorian
+* Lydian
+
 Dependencies: Prior to run this application you need to install [java](https://www.java.com/en/download/help/download_options.html) to your computer.
 
 Executable jar (pocket-scale-calculator-0.6.jar) is already compiled and could be found at the root of the project. However, if you need to compile a new jar please build the project and run `./gradlew jar` command. New jar will be saved to the build/libs directory.
@@ -19,15 +26,6 @@ Also, you can use additional arguments for starting the app with specific option
 
 For example, starting the app with ' f majp y 35' arguments will start app with F Major Pentatonic setting, missing hanger option and PO-35 model UI. Please make sure you separate arguments with space button.
 
-Currently supported scales are:
-* Minor (Natural, Harmonic & Pentatonic)
-* Major (Natural, Harmonic & Pentatonic)
-* Blues
-* Dorian
-* Lydian
-
 Have fun!
-
-I will appreciate any defects/issues found during your app experience, please contact me to fix it.
 
 _*PO-33/PO-137 scaling functionality is yet limited to Minor scale set on the device itself._
