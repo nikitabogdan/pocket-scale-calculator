@@ -1,4 +1,4 @@
-I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator (v.0.6).
+I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator (v.0.7).
 
 This console app is a helper tool for calculating scales for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-33/PO-133 & PO-35/PO-137* series.
 It was inspired by [https://punkyv4n.me/po-33-scale-app](https://punkyv4n.me/po-33-scale-app/), but I wanted to make an ancient-looking desktop console version with pocket operator vibes, so here we are.
