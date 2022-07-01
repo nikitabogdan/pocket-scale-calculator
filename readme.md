@@ -55,7 +55,7 @@ Also, you can use additional arguments for starting the app with specific option
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
 4. PO model UI(33/35) (default is 33)
-5. PO scale(major/minor) (default is Minor)
+5. PO scale(major/minor) (default is Minor, option is applicable for PO-35 model only)
 
 For example, starting the app with 'f majpe y 35 maj' arguments will start app with F Major Pentatonic setting, missing
 hanger option, PO-35 model UI and Major PO-35 device scale setting. Please make sure you separate arguments with space
