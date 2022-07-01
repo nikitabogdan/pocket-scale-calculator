@@ -1,7 +1,21 @@
 package constants
 
-import helpers.transpose
-import types.Notes
+import methods.transpose
+
+object Notes {
+    const val C = "C"
+    const val C_SHARP = "C#"
+    const val D = "D"
+    const val D_SHARP = "D#"
+    const val E = "E"
+    const val F = "F"
+    const val F_SHARP = "F#"
+    const val G = "G"
+    const val G_SHARP = "G#"
+    const val A = "A"
+    const val A_SHARP = "A#"
+    const val B = "B"
+}
 
 val notesOrder: Array<String> = arrayOf(
     Notes.C,
@@ -43,13 +57,29 @@ object ButtonIndexes {
     const val BT06 = 5
     const val BT07 = 6
     const val BT08 = 7
-    const val BT09 = 8
-    const val BT10 = 9
-    const val BT11 = 10
-    const val BT12 = 11
-    const val BT13 = 12
-    const val BT14 = 13
-    const val BT15 = 14
-    const val BT16 = 15
 }
+
+object Placeholders {
+    const val MODEL = "%PON%"
+    const val PO_SCALE = "DISPLAY_PLACEHOLDER_LINE1%"
+    const val SCALE_NAME = "%DISPLAY_PLACEHOLDER_LINE2%"
+    const val SAMPLE_KEY = "%DISPLAY_PLACEHOLDER_LINE3%"
+    const val BT01 = "%B01%"
+    const val BT02 = "%B02%"
+    const val BT03 = "%B03%"
+    const val BT04 = "%B04%"
+    const val BT05 = "%B05%"
+    const val BT06 = "%B06%"
+    const val BT07 = "%B07%"
+    const val BT08 = "%B08%"
+    const val BT09 = "%B09%"
+    const val BT10 = "%B10%"
+    const val BT11 = "%B11%"
+    const val BT12 = "%B12%"
+    const val BT13 = "%B13%"
+    const val BT14 = "%B14%"
+    const val BT15 = "%B15%"
+    const val BT16 = "%B16%"
+}
+
 

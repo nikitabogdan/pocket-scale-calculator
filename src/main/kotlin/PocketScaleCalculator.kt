@@ -3,28 +3,36 @@ import constants.ArgsOrder
 import constants.DEFAULT_INPUT_MESSAGE
 import constants.ExitCodes
 import constants.HEADER_OFF
+import constants.HEADER_OK
 import constants.HEADER_ON
+import constants.HEADER_OPTIONS
+import constants.Notes
+import constants.PO_MODEL_OPTION_MESSAGE
+import constants.SNAP_OFF_HANGER_OPTION_MESSAGE
+import constants.YES_SHORTCUT
 import constants.aboutKeywordsList
-import constants.donateKeywordsList
 import constants.exitKeywordsList
+import constants.helpKeywordsList
+import constants.notesOrder
 import constants.optionsKeywordsList
+import constants.prepareUnrecognisedInputErrorMessage
 import constants.supportKeywordsList
-import helpers.getPOModelOption
-import helpers.getRootKey
-import helpers.getScale
-import helpers.getSnapOffHangerOption
-import helpers.setOptions
-import helpers.transposeNotesGroup
-import helpers.validateInput
+import methods.dropOctave
+import methods.getPOModelOption
+import methods.getRootKey
+import methods.getScale
+import methods.getSnapOffHangerOption
+import methods.printAbout
+import methods.printCalculations
+import methods.printDescription
+import methods.printErrorMessage
+import methods.printHeader
+import methods.printInputMessage
+import methods.printSupport
+import methods.transposeNotesGroup
+import methods.userInputHasText
 import types.MinorScales
-import types.Notes
 import types.PocketOperators
-import ui.printAbout
-import ui.printCalculations
-import ui.printDescription
-import ui.printHeader
-import ui.printInputMessage
-import ui.printSupport
 import kotlin.system.exitProcess
 
 class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
@@ -42,23 +50,46 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
             poModel = getPOModelOption(appArgs)
         }
 
-        if (this.validateInput()) this.printCalculations(this.transposeNotesGroup())
+        checkAndCalculate()
         while (true) {
             printInputMessage(DEFAULT_INPUT_MESSAGE)
             val inputArgs = readln().split(ARGS_SEPARATOR).toTypedArray()
             when (inputArgs[ArgsOrder.ROOT_KEY_OR_COMMAND_NAME].lowercase()) {
-                in exitKeywordsList -> this.terminate()
-                in supportKeywordsList -> printDescription()
-                in optionsKeywordsList -> this.setOptions()
-                in donateKeywordsList -> printSupport()
+                in helpKeywordsList -> printDescription()
+                in optionsKeywordsList -> setOptions()
                 in aboutKeywordsList -> printAbout()
+                in supportKeywordsList -> printSupport()
+                in exitKeywordsList -> terminate()
                 else -> {
                     rootKey = getRootKey(inputArgs)
                     scale = getScale(inputArgs)
-                    if (this.validateInput()) this.printCalculations(this.transposeNotesGroup())
+                    checkAndCalculate()
                 }
             }
         }
+    }
+
+    private fun checkAndCalculate() {
+        if (validateUserInput()) {
+            this.transposeNotesGroup().also {
+                this.printCalculations(it)
+            }
+        } else {
+            printErrorMessage(prepareUnrecognisedInputErrorMessage(rootKey))
+        }
+    }
+
+    private fun validateUserInput() = notesOrder.indexOf(rootKey.dropOctave()) != -1
+
+    private fun setOptions() {
+        printHeader(HEADER_OPTIONS)
+        printInputMessage(SNAP_OFF_HANGER_OPTION_MESSAGE)
+        this.snapOffHanger = userInputHasText(YES_SHORTCUT)
+        printHeader(HEADER_OK)
+        printInputMessage(PO_MODEL_OPTION_MESSAGE)
+        this.poModel =
+            if (userInputHasText(PocketOperators.PO_35.modelIndex)) PocketOperators.PO_35 else PocketOperators.PO_33
+        printHeader(HEADER_OK)
     }
 
     private fun terminate() {

@@ -1,4 +1,4 @@
-I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator (v.0.7).
+### I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator.
 
 This console app is a helper tool for calculating scales
 for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-33/PO-133 & PO-35/PO-137* series.
@@ -7,7 +7,14 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 <img width="733" alt="terminal profile icon" src="https://user-images.githubusercontent.com/107914638/174764479-71575b0c-8d04-44ac-a7aa-f6825d45ce23.png">
 
-Currently supported scales are:
+## v.0.7 changelist:
+
+* added args tests
+* fixed minor arg-related defects
+
+## Some useful info:
+
+Current supported scales are:
 
 * Minor (Natural, Harmonic & Pentatonic)
 * Major (Natural, Harmonic & Pentatonic)
@@ -18,12 +25,12 @@ Currently supported scales are:
 Dependencies: Prior to run this application you need to
 install [java](https://www.java.com/en/download/help/download_options.html) to your computer.
 
-Executable jar (pocket-scale-calculator-0.6.jar) is already compiled and could be found at the root of the project.
-However, if you need to compile a new jar please build the project and run `./gradlew jar` command. New jar will be
-saved to the build/libs directory.
+Executable jar (pocket-scale-calculator-0.7.jar) is already compiled and could be found at the root of the project.
+However, if you need to compile a new jar please build the project and run `./gradlew test jar` command. New jar will
+be saved to the build/libs directory.
 
 To run application please run `java -jar %pocket-scale-calc.jar file location%` from your terminal (for
-example: `java -jar /Users/bilbo_bogdans/Git/pocket-scale-calculator/build/libs/pocket-scale-calculator-0.6.jar`).
+example: `java -jar /Users/bilbo_bogdans/Git/pocket-scale-calculator/build/libs/pocket-scale-calculator-0.7.jar`).
 MacOS users also might set their terminal profile to have a shortcut for the app (please check 'pocket-scale-calculator
 example.terminal' file at the root of the project) with specific window resolution & settings set. To use shared profile
 you need to fix jar file location for the CommandString key, first.
@@ -41,8 +48,3 @@ hanger option and PO-35 model UI. Please make sure you separate arguments with s
 Have fun with your POs and never miss the right scale:-)
 
 _*PO-33/PO-137 scaling functionality is yet limited to Minor scale set on the device itself._
-
-v.0.7 changelist:
-
-* added args tests
-* fixed minor arg-related defects

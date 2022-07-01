@@ -1,9 +1,9 @@
+import constants.Notes
 import constants.YES_SHORTCUT
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import types.MinorScales
-import types.Notes
 import types.PocketOperators
 
 class AppArgsTests {

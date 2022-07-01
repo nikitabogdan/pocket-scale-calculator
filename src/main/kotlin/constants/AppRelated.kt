@@ -17,10 +17,10 @@ object ExitCodes {
     // const val BAD_ARGUMENTS = 1
 }
 
-val supportKeywordsList = listOf("", "help", "tutorial", "description")
+val helpKeywordsList = listOf("", "help", "tutorial", "description")
 val exitKeywordsList = listOf("exit", "quit", "off", "terminate")
 val optionsKeywordsList = listOf("options", "preferences")
-val donateKeywordsList = listOf("donate", "support")
+val supportKeywordsList = listOf("donate", "support")
 val aboutKeywordsList = listOf("about", "info")
 
 const val HARMONIC_SHORTCUT = "h"

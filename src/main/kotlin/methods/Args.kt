@@ -1,27 +1,17 @@
-package helpers
+package methods
 
 
-import PocketScaleCalculator
 import constants.ArgsOrder
 import constants.BLUES_SHORTCUT
 import constants.DORIAN_SHORTCUT
 import constants.HARMONIC_SHORTCUT
-import constants.HEADER_OK
-import constants.HEADER_OPTIONS
 import constants.LYDIAN_SHORTCUT
 import constants.MAJOR_SHORTCUT
+import constants.Notes
 import constants.PENTATONIC_SHORTCUT
-import constants.PO_MODEL_OPTION_MESSAGE
-import constants.SNAP_OFF_HANGER_OPTION_MESSAGE
 import constants.YES_SHORTCUT
-import constants.notesOrder
-import constants.prepareUnrecognisedInputErrorMessage
 import types.MinorScales
-import types.Notes
 import types.PocketOperators
-import ui.printErrorMessage
-import ui.printHeader
-import ui.printInputMessage
 
 fun getRootKey(args: Array<String>) = try {
     args[ArgsOrder.ROOT_KEY_OR_COMMAND_NAME].uppercase()
@@ -70,25 +60,4 @@ fun getPOModelOption(args: Array<String>) = try {
     ) PocketOperators.PO_35 else PocketOperators.PO_33
 } catch (ignored: ArrayIndexOutOfBoundsException) {
     PocketOperators.PO_33
-}
-
-fun PocketScaleCalculator.setOptions() {
-    printHeader(HEADER_OPTIONS)
-    printInputMessage(SNAP_OFF_HANGER_OPTION_MESSAGE)
-    this.snapOffHanger = readln().lowercase().indexOf(YES_SHORTCUT) > -1
-    printHeader(HEADER_OK)
-    printInputMessage(PO_MODEL_OPTION_MESSAGE)
-    this.poModel = if (readln().lowercase().indexOf(PocketOperators.PO_35.modelIndex) > -1) {
-        PocketOperators.PO_35
-    } else {
-        PocketOperators.PO_33
-    }
-    printHeader(HEADER_OK)
-}
-
-fun PocketScaleCalculator.validateInput() = if (notesOrder.indexOf(rootKey.dropOctave()) == -1) {
-    printErrorMessage(prepareUnrecognisedInputErrorMessage(rootKey))
-    false
-} else {
-    true
 }

@@ -1,4 +1,4 @@
-package ui
+package methods
 
 import PocketScaleCalculator
 import constants.APP_VERSION
@@ -11,31 +11,28 @@ import constants.HEADER_FILLER_SIGN
 import constants.HEADER_SUPPORT
 import constants.INDENT
 import constants.OUT_OF_SCALE_KEY_DEFINITION
-import constants.Placeholders.BT01_PH
-import constants.Placeholders.BT02_PH
-import constants.Placeholders.BT03_PH
-import constants.Placeholders.BT04_PH
-import constants.Placeholders.BT05_PH
-import constants.Placeholders.BT06_PH
-import constants.Placeholders.BT07_PH
-import constants.Placeholders.BT08_PH
-import constants.Placeholders.BT09_PH
-import constants.Placeholders.BT10_PH
-import constants.Placeholders.BT11_PH
-import constants.Placeholders.BT12_PH
-import constants.Placeholders.BT13_PH
-import constants.Placeholders.BT14_PH
-import constants.Placeholders.BT15_PH
-import constants.Placeholders.BT16_PH
-import constants.Placeholders.MODEL_PLACEHOLDER
-import constants.Placeholders.PO_SCALE_PLACEHOLDER
-import constants.Placeholders.SAMPLE_KEY_PLACEHOLDER
-import constants.Placeholders.SCALE_NAME_PLACEHOLDER
+import constants.Placeholders.BT01
+import constants.Placeholders.BT02
+import constants.Placeholders.BT03
+import constants.Placeholders.BT04
+import constants.Placeholders.BT05
+import constants.Placeholders.BT06
+import constants.Placeholders.BT07
+import constants.Placeholders.BT08
+import constants.Placeholders.BT09
+import constants.Placeholders.BT10
+import constants.Placeholders.BT11
+import constants.Placeholders.BT12
+import constants.Placeholders.BT13
+import constants.Placeholders.BT14
+import constants.Placeholders.BT15
+import constants.Placeholders.BT16
+import constants.Placeholders.MODEL
+import constants.Placeholders.PO_SCALE
+import constants.Placeholders.SAMPLE_KEY
+import constants.Placeholders.SCALE_NAME
 import constants.ROOT_KEY_SURROUND_DEFINITION
 import constants.WINDOW_WIDTH
-import helpers.convertDeviceScalePlaceholder
-import helpers.convertSampleKeyPlaceholder
-import helpers.convertScaleNamePlaceholder
 import types.MinorScales
 
 fun printHeader(text: String = "") {
@@ -147,12 +144,12 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
 
 } +
         "@@@@                °#  O°o*          oo   @@@@\n" +
-        "@@@@   $MODEL_PLACEHOLDER       *#OO°#°oO          @#   @@@@\n" +
+        "@@@@   $MODEL       *#OO°#°oO          @#   @@@@\n" +
         "@@@@          ...................     °°   @@@@\n" +
         "@@@@   #################################   @@@@\n" +
-        "@@@@   @@  $PO_SCALE_PLACEHOLDER ##   @@@@\n" +
-        "@@@@   ## $SCALE_NAME_PLACEHOLDER ##   @@@@\n" +
-        "@@@@  .## $SAMPLE_KEY_PLACEHOLDER ##   @@@@\n" +
+        "@@@@   @@  $PO_SCALE ##   @@@@\n" +
+        "@@@@   ## $SCALE_NAME ##   @@@@\n" +
+        "@@@@  .## $SAMPLE_KEY ##   @@@@\n" +
         "@@@@  .##                             ##   @@@@\n" +
         "@@@@.  ##  $ROOT_KEY_SURROUND_DEFINITION: root; $OUT_OF_SCALE_KEY_DEFINITION: out of scale ##  .@@@@\n" +
         "@@@@*  *o°#########################Ooo*o  *@@@@\n" +
@@ -162,19 +159,19 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
         "@@@O   'ooO'  'OoO°  'OoO°  o*oo@* o**o#*  @@@@\n" +
         "@@@O                                 ,_.   @@@@\n" +
         "@@@O                                @O.@#  @@@@\n" +
-        "@@@@   $BT01_PH  $BT02_PH  $BT03_PH  $BT04_PH   'OoO*  @@@@\n" +
+        "@@@@   $BT01  $BT02  $BT03  $BT04   'OoO*  @@@@\n" +
         "@@@@                                 °°'   O@@@\n" +
         "@@@O                                 ,o.   O@@@\n" +
         "@@@@                                @O.@#  @@@@\n" +
-        "@@@O   $BT05_PH  $BT06_PH  $BT07_PH  $BT08_PH   'OoO*  @@@@\n" +
+        "@@@O   $BT05  $BT06  $BT07  $BT08   'OoO*  @@@@\n" +
         "@@@@                                 °'    @@@@\n" +
         "@@@O                                 oo*.  O@@@\n" +
         "@@@@                                @O.@#  @@@@\n" +
-        "@@@O   $BT09_PH  $BT10_PH  $BT11_PH  $BT12_PH   'OoO*  @@@@\n" +
+        "@@@O   $BT09  $BT10  $BT11  $BT12   'OoO*  @@@@\n" +
         "@@@@                                  °°   @@@@\n" +
         "@@@O                                 ,o.   @@@@\n" +
         "@@@@                                @O.@#  @@@@\n" +
-        "@@@@   $BT13_PH  $BT14_PH  $BT15_PH  $BT16_PH   'OoO*  @@@@\n" +
+        "@@@@   $BT13  $BT14  $BT15  $BT16   'OoO*  @@@@\n" +
         "@@@@                                       @@@@\n" +
         "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
         "                                               "
@@ -182,25 +179,25 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
 fun PocketScaleCalculator.printCalculations(transposedNotes: Array<String>) {
     println(
         this.prepareCalculationsDraft()
-            .replace(MODEL_PLACEHOLDER, this.poModel.displayName)
-            .replace(PO_SCALE_PLACEHOLDER, this.convertDeviceScalePlaceholder())
-            .replace(SCALE_NAME_PLACEHOLDER, this.convertScaleNamePlaceholder())
-            .replace(SAMPLE_KEY_PLACEHOLDER, this.convertSampleKeyPlaceholder())
-            .replace(BT01_PH, transposedNotes[ButtonIndexes.BT01])
-            .replace(BT02_PH, transposedNotes[ButtonIndexes.BT02])
-            .replace(BT03_PH, transposedNotes[ButtonIndexes.BT03])
-            .replace(BT04_PH, transposedNotes[ButtonIndexes.BT04])
-            .replace(BT05_PH, transposedNotes[ButtonIndexes.BT05])
-            .replace(BT06_PH, transposedNotes[ButtonIndexes.BT06])
-            .replace(BT07_PH, transposedNotes[ButtonIndexes.BT07])
-            .replace(BT08_PH, transposedNotes[ButtonIndexes.BT08])
-            .replace(BT09_PH, transposedNotes[ButtonIndexes.BT09])
-            .replace(BT10_PH, transposedNotes[ButtonIndexes.BT10])
-            .replace(BT11_PH, transposedNotes[ButtonIndexes.BT11])
-            .replace(BT12_PH, transposedNotes[ButtonIndexes.BT12])
-            .replace(BT13_PH, transposedNotes[ButtonIndexes.BT13])
-            .replace(BT14_PH, transposedNotes[ButtonIndexes.BT14])
-            .replace(BT15_PH, transposedNotes[ButtonIndexes.BT15])
-            .replace(BT16_PH, transposedNotes[ButtonIndexes.BT16])
+            .replace(MODEL, this.poModel.displayName)
+            .replace(PO_SCALE, this.convertDeviceScalePlaceholder())
+            .replace(SCALE_NAME, this.convertScaleNamePlaceholder())
+            .replace(SAMPLE_KEY, this.convertSampleKeyPlaceholder())
+            .replace(BT01, transposedNotes[ButtonIndexes.BT01])
+            .replace(BT02, transposedNotes[ButtonIndexes.BT02])
+            .replace(BT03, transposedNotes[ButtonIndexes.BT03])
+            .replace(BT04, transposedNotes[ButtonIndexes.BT04])
+            .replace(BT05, transposedNotes[ButtonIndexes.BT05])
+            .replace(BT06, transposedNotes[ButtonIndexes.BT06])
+            .replace(BT07, transposedNotes[ButtonIndexes.BT07])
+            .replace(BT08, transposedNotes[ButtonIndexes.BT08])
+            .replace(BT09, transposedNotes[ButtonIndexes.BT01.octaveDown()])
+            .replace(BT10, transposedNotes[ButtonIndexes.BT02.octaveDown()])
+            .replace(BT11, transposedNotes[ButtonIndexes.BT03.octaveDown()])
+            .replace(BT12, transposedNotes[ButtonIndexes.BT04.octaveDown()])
+            .replace(BT13, transposedNotes[ButtonIndexes.BT05.octaveDown()])
+            .replace(BT14, transposedNotes[ButtonIndexes.BT06.octaveDown()])
+            .replace(BT15, transposedNotes[ButtonIndexes.BT07.octaveDown()])
+            .replace(BT16, transposedNotes[ButtonIndexes.BT08.octaveDown()])
     )
 }

@@ -2,7 +2,7 @@ package types
 
 import constants.ButtonIndexes
 import constants.TransposeDiagrams
-import helpers.octaveDown
+import methods.octaveDown
 
 enum class MinorScales(
     val scaleName: String,

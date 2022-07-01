@@ -1,4 +1,4 @@
-package helpers
+package methods
 
 import PocketScaleCalculator
 import constants.PO_BUTTONS_TO_OCTAVE_DOWN
