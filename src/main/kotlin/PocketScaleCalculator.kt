@@ -6,8 +6,10 @@ import constants.HEADER_OFF
 import constants.HEADER_OK
 import constants.HEADER_ON
 import constants.HEADER_OPTIONS
+import constants.MAJOR_SHORTCUT
 import constants.Notes
 import constants.PO_MODEL_OPTION_MESSAGE
+import constants.PO_SCALE_OPTION_MESSAGE
 import constants.SNAP_OFF_HANGER_OPTION_MESSAGE
 import constants.YES_SHORTCUT
 import constants.aboutKeywordsList
@@ -19,6 +21,7 @@ import constants.prepareUnrecognisedInputErrorMessage
 import constants.supportKeywordsList
 import methods.dropOctave
 import methods.getPOModelOption
+import methods.getPOScaleOption
 import methods.getRootKey
 import methods.getScale
 import methods.getSnapOffHangerOption
@@ -31,24 +34,21 @@ import methods.printInputMessage
 import methods.printSupport
 import methods.transposeNotesGroup
 import methods.userInputHasText
-import types.MinorScales
+import types.POScales
 import types.PocketOperators
+import types.Scales
 import kotlin.system.exitProcess
 
 class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
     var rootKey = Notes.A
-    var scale = MinorScales.NATURAL_MINOR
+    var scale = Scales.MINOR_NATURAL_MINOR
     var snapOffHanger = false
     var poModel = PocketOperators.PO_33
+    var poScale = POScales.MINOR
 
     fun execute() {
         printHeader(HEADER_ON)
-        appArgs?.let {
-            rootKey = getRootKey(appArgs)
-            scale = getScale(appArgs)
-            snapOffHanger = getSnapOffHangerOption(appArgs)
-            poModel = getPOModelOption(appArgs)
-        }
+        appArgs?.let { applyArgs(appArgs) }
 
         checkAndCalculate()
         while (true) {
@@ -61,12 +61,20 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
                 in supportKeywordsList -> printSupport()
                 in exitKeywordsList -> terminate()
                 else -> {
-                    rootKey = getRootKey(inputArgs)
-                    scale = getScale(inputArgs)
+                    this.getRootKey(inputArgs)
+                        .getScale(inputArgs)
                     checkAndCalculate()
                 }
             }
         }
+    }
+
+    private fun applyArgs(appArgs: Array<String>) {
+        this.getSnapOffHangerOption(appArgs)
+            .getPOModelOption(appArgs)
+            .getPOScaleOption(appArgs)
+            .getRootKey(appArgs)
+            .getScale(appArgs)
     }
 
     private fun checkAndCalculate() {
@@ -87,9 +95,14 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
         this.snapOffHanger = userInputHasText(YES_SHORTCUT)
         printHeader(HEADER_OK)
         printInputMessage(PO_MODEL_OPTION_MESSAGE)
-        this.poModel =
-            if (userInputHasText(PocketOperators.PO_35.modelIndex)) PocketOperators.PO_35 else PocketOperators.PO_33
+        this.poModel = if (userInputHasText(PocketOperators.PO_35.modelIndex))
+            PocketOperators.PO_35 else PocketOperators.PO_33.also { this.poScale = POScales.MINOR }
         printHeader(HEADER_OK)
+        if (poModel == PocketOperators.PO_35) {
+            printInputMessage(PO_SCALE_OPTION_MESSAGE)
+            this.poScale = if (userInputHasText(MAJOR_SHORTCUT)) POScales.MAJOR else POScales.MINOR
+            printHeader(HEADER_OK)
+        }
     }
 
     private fun terminate() {

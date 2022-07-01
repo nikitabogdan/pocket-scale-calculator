@@ -1,8 +1,9 @@
 package constants
 
-import types.PO35Scales
+import types.POScales
+import types.PocketOperators
 
-const val APP_VERSION = "0.7"
+const val APP_VERSION = "0.8"
 const val ARGS_SEPARATOR = " "
 
 object ArgsOrder {
@@ -10,6 +11,7 @@ object ArgsOrder {
     const val SCALE = 1
     const val SNAP_OFF_HANGER = 2
     const val PO_MODEL = 3
+    const val PO_SCALE = 4
 }
 
 object ExitCodes {
@@ -24,11 +26,12 @@ val supportKeywordsList = listOf("donate", "support")
 val aboutKeywordsList = listOf("about", "info")
 
 const val HARMONIC_SHORTCUT = "h"
-const val PENTATONIC_SHORTCUT = "p"
+const val PENTATONIC_SHORTCUT = "pe"
 const val MAJOR_SHORTCUT = "ma"
 const val BLUES_SHORTCUT = "b"
 const val DORIAN_SHORTCUT = "d"
 const val LYDIAN_SHORTCUT = "l"
+const val PHRYGIAN_SHORTCUT = "ph"
 const val YES_SHORTCUT = "y"
 
 const val WINDOW_WIDTH = 47
@@ -52,8 +55,11 @@ const val SAMPLE_KEY_TEXT = "Sample key: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
 const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (33/35): "
+const val PO_SCALE_OPTION_MESSAGE = "Pocket operator scale? (major/minor): "
 
-fun prepareScaleNameText(scale: PO35Scales) = "PO-35 Scale: ${scale.scaleName}"
+fun preparePODeviceScaleText(poModel: PocketOperators, scale: POScales) =
+    "PO-${poModel.modelIndex} Scale: ${scale.scaleName}"
+
 fun prepareInconsistentNoteLengthErrorMessage(printNote: String) = "Inconsistent note $printNote length"
 fun prepareUnrecognisedInputErrorMessage(rootKey: String) = "Input [$rootKey] is unrecognised, please try again"
 const val INCONSISTENT_ROOT_KEY_ERROR_MESSAGE = "Unable to drop octave for empty root key"

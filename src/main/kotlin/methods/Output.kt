@@ -33,7 +33,7 @@ import constants.Placeholders.SAMPLE_KEY
 import constants.Placeholders.SCALE_NAME
 import constants.ROOT_KEY_SURROUND_DEFINITION
 import constants.WINDOW_WIDTH
-import types.MinorScales
+import types.Scales
 
 fun printHeader(text: String = "") {
     if (text.isEmpty()) {
@@ -88,9 +88,9 @@ fun printDescription() {
     println("  Currently supported scales are: ")
     println("    – Minor (Natural, Harmonic & Pentatonic)")
     println("    – Major (Natural, Harmonic & Pentatonic)")
-    println("    – ${MinorScales.BLUES.scaleName}")
-    println("    – ${MinorScales.DORIAN.scaleName}")
-    println("    – ${MinorScales.LYDIAN.scaleName}")
+    println("    – ${Scales.MINOR_BLUES.scaleName}")
+    println("    – ${Scales.MINOR_DORIAN.scaleName}")
+    println("    – ${Scales.MINOR_LYDIAN.scaleName}")
     println("Should work the same with PO-35 / PO-137 models")
     println("with Minor scale picked on the device.")
     println("")

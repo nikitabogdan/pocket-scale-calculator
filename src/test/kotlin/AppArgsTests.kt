@@ -3,8 +3,8 @@ import constants.YES_SHORTCUT
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import types.MinorScales
 import types.PocketOperators
+import types.Scales
 
 class AppArgsTests {
 
@@ -24,7 +24,7 @@ class AppArgsTests {
      * Assert settings for current PocketScaleCalculator app state
      */
     private fun PocketScaleCalculator.assertSettings(
-        expectedScale: MinorScales = MinorScales.NATURAL_MINOR,
+        expectedScale: Scales = Scales.MINOR_NATURAL_MINOR,
         expectedRootKey: String = Notes.A,
         expectedSnapOffHangerOption: Boolean = false,
         expectedPOModelOption: PocketOperators = PocketOperators.PO_33
@@ -54,7 +54,7 @@ class AppArgsTests {
     @Test
     fun `Start app with 2 args positive test`() {
         val testRootKey = Notes.B
-        val testScale = MinorScales.DORIAN
+        val testScale = Scales.MINOR_DORIAN
         PocketScaleCalculator(arrayOf(testRootKey, testScale.scaleName)).executeInTestMode()
             .assertSettings(expectedScale = testScale, expectedRootKey = testRootKey)
     }
@@ -62,7 +62,7 @@ class AppArgsTests {
     @Test
     fun `Start app with 3 args positive test`() {
         val testRootKey = Notes.B
-        val testScale = MinorScales.DORIAN
+        val testScale = Scales.MINOR_DORIAN
         val testSnapOffHanger = YES_SHORTCUT
         PocketScaleCalculator(arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger)).executeInTestMode()
             .assertSettings(
@@ -75,7 +75,7 @@ class AppArgsTests {
     @Test
     fun `Start app with 4 args positive test`() {
         val testRootKey = Notes.B
-        val testScale = MinorScales.DORIAN
+        val testScale = Scales.MINOR_DORIAN
         val testSnapOffHanger = YES_SHORTCUT
         val poModel = PocketOperators.PO_35
         PocketScaleCalculator(

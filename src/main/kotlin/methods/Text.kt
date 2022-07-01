@@ -2,6 +2,9 @@ package methods
 
 import PocketScaleCalculator
 import constants.INCONSISTENT_ROOT_KEY_ERROR_MESSAGE
+import constants.MAJOR_TO_DORIAN_TRANSPOSE_SHIFT
+import constants.MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT
+import constants.MAJOR_TO_MINOR_PHRYGIAN_TRANSPOSE_SHIFT
 import constants.MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT
 import constants.MINOR_TO_LYDIAN_TRANSPOSE_SHIFT
 import constants.MINOR_TO_MAJOR_TRANSPOSE_SHIFT
@@ -13,10 +16,8 @@ import constants.REGULAR_NOTE_SURROUND_DEFINITION
 import constants.ROOT_KEY_SURROUND_DEFINITION
 import constants.SAMPLE_KEY_TEXT
 import constants.prepareInconsistentNoteLengthErrorMessage
-import constants.prepareScaleNameText
-import types.MinorScales
-import types.PO35Scales
-import types.PocketOperators
+import constants.preparePODeviceScaleText
+import types.Scales
 
 fun String.dropOctave() = if (this.isNotEmpty()) {
     if (this.last().isDigit()) this.dropLast(1) else this
@@ -47,19 +48,24 @@ fun PocketScaleCalculator.convertNotePlaceholder(
 }
 
 fun PocketScaleCalculator.convertDeviceScalePlaceholder() =
-    (if (poModel == PocketOperators.PO_33) "" else prepareScaleNameText(PO35Scales.MINOR))
-        .addCharsToFullLine(PO_SCALE.length)
+    preparePODeviceScaleText(poModel, poScale).addCharsToFullLine(PO_SCALE.length)
 
 fun PocketScaleCalculator.convertScaleNamePlaceholder() = "${rootKey.dropOctave()} ${scale.scaleName}"
     .addCharsToFullLine(SCALE_NAME.length)
 
 fun PocketScaleCalculator.convertSampleKeyPlaceholder() = "$SAMPLE_KEY_TEXT${
     when (scale) {
-        MinorScales.NATURAL_MINOR, MinorScales.HARMONIC_MINOR, MinorScales.PENTATONIC_MINOR -> rootKey
-        MinorScales.NATURAL_MAJOR, MinorScales.HARMONIC_MAJOR, MinorScales.PENTATONIC_MAJOR -> this
-            .transposeNote(MINOR_TO_MAJOR_TRANSPOSE_SHIFT, true)
-        MinorScales.BLUES, MinorScales.DORIAN -> this.transposeNote(MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT, true)
-        MinorScales.LYDIAN -> this.transposeNote(MINOR_TO_LYDIAN_TRANSPOSE_SHIFT, true)
+        Scales.MINOR_NATURAL_MINOR, Scales.MINOR_HARMONIC_MINOR, Scales.MINOR_PENTATONIC_MINOR -> rootKey
+        Scales.MINOR_NATURAL_MAJOR, Scales.MINOR_HARMONIC_MAJOR, Scales.MINOR_PENTATONIC_MAJOR -> this
+            .transposeNote(MINOR_TO_MAJOR_TRANSPOSE_SHIFT)
+        Scales.MINOR_BLUES, Scales.MINOR_DORIAN -> this.transposeNote(MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT)
+        Scales.MINOR_LYDIAN -> this.transposeNote(MINOR_TO_LYDIAN_TRANSPOSE_SHIFT)
+        Scales.MAJOR_NATURAL_MAJOR, Scales.MAJOR_PENTATONIC_MAJOR -> rootKey
+        Scales.MAJOR_NATURAL_MINOR, Scales.MAJOR_PENTATONIC_MINOR, Scales.MAJOR_PHRYGIAN -> this.transposeNote(
+            MAJOR_TO_MINOR_PHRYGIAN_TRANSPOSE_SHIFT
+        )
+        Scales.MAJOR_LYDIAN -> this.transposeNote(MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT)
+        Scales.MAJOR_DORIAN -> this.transposeNote(MAJOR_TO_DORIAN_TRANSPOSE_SHIFT)
     }
 }".addCharsToFullLine(SAMPLE_KEY.length)
 
