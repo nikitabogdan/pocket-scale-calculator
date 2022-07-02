@@ -16,17 +16,12 @@ object Notes {
 }
 
 val notesOrder: Array<String> = arrayOf(
-    Notes.C,
-    Notes.C_SHARP,
-    Notes.D,
-    Notes.D_SHARP,
+    Notes.C, Notes.C_SHARP,
+    Notes.D, Notes.D_SHARP,
     Notes.E,
-    Notes.F,
-    Notes.F_SHARP,
-    Notes.G,
-    Notes.G_SHARP,
-    Notes.A,
-    Notes.A_SHARP,
+    Notes.F, Notes.F_SHARP,
+    Notes.G, Notes.G_SHARP,
+    Notes.A, Notes.A_SHARP,
     Notes.B
 )
 
@@ -48,7 +43,6 @@ object ScaleNames {
 const val MINOR_TO_MAJOR_TRANSPOSE_SHIFT = -3
 const val MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT = -5
 const val MINOR_TO_LYDIAN_TRANSPOSE_SHIFT = -8
-
 const val MAJOR_TO_DORIAN_TRANSPOSE_SHIFT = -2
 const val MAJOR_TO_PHRYGIAN_TRANSPOSE_SHIFT = -4
 const val MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT = -5
