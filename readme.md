@@ -41,12 +41,12 @@ Current supported scales for PO-35/137 with Major scale setting:
 Dependencies: Prior to run this application you need to
 install [java](https://www.java.com/en/download/help/download_options.html) to your computer.
 
-Executable jar (pocket-scale-calculator-0.8.jar) is already compiled and could be found at the root of the project.
+Executable jar (pocket-scale-calculator.jar) is already compiled and could be found at the root of the project.
 However, if you need to compile a new jar please build the project and run `./gradlew test jar` command. New jar will
 be saved to the build/libs directory.
 
 To run application please run `java -jar %pocket-scale-calc.jar file location%` from your terminal (for
-example: `java -jar /Users/bilbo_bogdans/Git/pocket-scale-calculator/build/libs/pocket-scale-calculator-0.8.jar`).
+example: `java -jar /Users/bilbo_bogdans/Git/pocket-scale-calculator/build/libs/pocket-scale-calculator.jar`).
 MacOS users also might set their terminal profile to have a shortcut for the app (please check 'pocket-scale-calculator
 example.terminal' file at the root of the project) with specific window resolution & settings set. To use shared profile
 you need to fix jar file location for the CommandString key, first.
