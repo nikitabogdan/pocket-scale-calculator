@@ -40,20 +40,22 @@ object ScaleNames {
     const val PHRYGIAN = "Phrygian"
 }
 
-const val NO_TRANSPOSE = 0
-const val MINOR_TO_LOCRIAN_TRANSPOSE_SHIFT = -2
-const val MINOR_TO_MAJOR_TRANSPOSE_SHIFT = -3
-const val MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT = -5
-const val MINOR_TO_PHRYGIAN_TRANSPOSE_SHIFT = -7
-const val MINOR_TO_LYDIAN_TRANSPOSE_SHIFT = -8
-const val MINOR_TO_MIXOLYDIAN_TRANSPOSE_SHIFT = -10
+object TransposeShifts {
+    const val NO_TRANSPOSE = 0
+    const val MINOR_TO_LOCRIAN = -2
+    const val MINOR_TO_MAJOR = -3
+    const val MINOR_TO_BLUES_DORIAN = -5
+    const val MINOR_TO_PHRYGIAN = -7
+    const val MINOR_TO_LYDIAN = -8
+    const val MINOR_TO_MIXOLYDIAN = -10
+    const val MAJOR_TO_DORIAN = -2
+    const val MAJOR_TO_PHRYGIAN = -4
+    const val MAJOR_TO_LYDIAN = -5
+    const val MAJOR_TO_MIXOLYDIAN = -7
+    const val MAJOR_TO_MINOR = -9
+    const val MAJOR_TO_LOCRIAN = -11
 
-const val MAJOR_TO_DORIAN_TRANSPOSE_SHIFT = -2
-const val MAJOR_TO_PHRYGIAN_TRANSPOSE_SHIFT = -4
-const val MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT = -5
-const val MAJOR_TO_MIXOLYDIAN_TRANSPOSE_SHIFT = -7
-const val MAJOR_TO_MINOR_TRANSPOSE_SHIFT = -9
-const val MAJOR_TO_LOCRIAN_TRANSPOSE_SHIFT = -11
+}
 
 const val PO_BUTTONS_TO_OCTAVE_DOWN = 8
 const val PO_NOTES_BUTTONS_COUNT = 16

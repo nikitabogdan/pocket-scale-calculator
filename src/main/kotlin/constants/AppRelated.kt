@@ -16,7 +16,6 @@ object ArgsOrder {
 
 object ExitCodes {
     const val SUCCESS = 0
-    // const val BAD_ARGUMENTS = 1
 }
 
 val helpKeywordsList = listOf("", "help", "tutorial", "description")

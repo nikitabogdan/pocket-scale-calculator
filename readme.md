@@ -12,7 +12,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 * added poScale app argument & option(major*/minor), *applicable only PO-35/137 only.
 * added support for po-35/137 Major scales: Major (Natural & Pentatonic) / Minor (Natural & Pentatonic) / Dorian /
   Lydian / Mixolydian / Locrian / Phrygian
-* added support for Minor scales: Mixolydian / Locrian / Phrygian
+* added support for additional Minor scales: Mixolydian / Locrian / Phrygian
 
 ## v.0.7 changelist:
 
@@ -21,7 +21,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 ## Some useful info:
 
-Current supported scales for PO-33/133 & PO-35/137 with Minor scale setting:
+Supported scales for PO-33/133 & PO-35/137 with Minor scale setting:
 
 * Minor (Natural, Harmonic & Pentatonic)
 * Major (Natural, Harmonic & Pentatonic)
@@ -32,7 +32,7 @@ Current supported scales for PO-33/133 & PO-35/137 with Minor scale setting:
 * Locrian
 * Phrygian
 
-Current supported scales for PO-35/137 with Major scale setting:
+Supported scales for PO-35/137 with Major scale setting:
 
 * Major (Natural & Pentatonic)
 * Minor (Natural & Pentatonic)
@@ -49,7 +49,7 @@ Executable jar (pocket-scale-calculator.jar) is already compiled and could be fo
 However, if you need to compile a new jar please build the project and run `./gradlew test jar` command. New jar will
 be saved to the build/libs directory.
 
-To run application please run `java -jar %pocket-scale-calc.jar file location%` from your terminal (for
+To start application please run `java -jar %pocket-scale-calc.jar file location%` from your terminal (for
 example: `java -jar /Users/bilbo_bogdans/Git/pocket-scale-calculator/build/libs/pocket-scale-calculator.jar`).
 MacOS users also might set their terminal profile to have a shortcut for the app (please check 'pocket-scale-calculator
 example.terminal' file at the root of the project) with specific window resolution & settings set. To use shared profile

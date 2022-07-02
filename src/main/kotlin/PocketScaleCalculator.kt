@@ -51,7 +51,6 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
     fun execute() {
         printHeader(HEADER_ON)
         appArgs?.let { applyArgs(appArgs) }
-
         checkAndCalculate()
         while (true) {
             printInputMessage(DEFAULT_INPUT_MESSAGE)
