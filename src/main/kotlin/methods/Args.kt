@@ -6,8 +6,11 @@ import constants.ArgsOrder
 import constants.BLUES_SHORTCUT
 import constants.DORIAN_SHORTCUT
 import constants.HARMONIC_SHORTCUT
+import constants.LOCRIAN_SHORTCUT
 import constants.LYDIAN_SHORTCUT
 import constants.MAJOR_SHORTCUT
+import constants.MINOR_SHORTCUT
+import constants.MIXOLYDIAN_SHORTCUT
 import constants.Notes
 import constants.PENTATONIC_SHORTCUT
 import constants.PHRYGIAN_SHORTCUT
@@ -26,57 +29,70 @@ fun PocketScaleCalculator.getRootKey(args: Array<String>) = this.also {
 
 fun PocketScaleCalculator.getScale(args: Array<String>) = this.also {
     this.scale = if (this.poScale == POScales.MINOR) {
-        try {
-            if (args[ArgsOrder.SCALE].lowercase().indexOf(MAJOR_SHORTCUT) > -1) {
-                if (args[ArgsOrder.SCALE].lowercase().indexOf(HARMONIC_SHORTCUT) > -1) {
-                    Scales.MINOR_HARMONIC_MAJOR
-                } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
-                    Scales.MINOR_PENTATONIC_MAJOR
-                } else {
-                    Scales.MINOR_NATURAL_MAJOR
-                }
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(BLUES_SHORTCUT) > -1) {
-                Scales.MINOR_BLUES
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(DORIAN_SHORTCUT) > -1) {
-                Scales.MINOR_DORIAN
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LYDIAN_SHORTCUT) > -1) {
-                Scales.MINOR_LYDIAN
-            } else {
-                if (args[ArgsOrder.SCALE].lowercase().indexOf(HARMONIC_SHORTCUT) > -1) {
-                    Scales.MINOR_HARMONIC_MINOR
-                } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
-                    Scales.MINOR_PENTATONIC_MINOR
-                } else {
-                    Scales.MINOR_NATURAL_MINOR
-                }
-            }
-        } catch (ignored: IndexOutOfBoundsException) {
-            Scales.MINOR_NATURAL_MINOR
-        }
+        searchForMinorScales(args)
     } else {
-        try {
-            if (args[ArgsOrder.SCALE].lowercase().indexOf(MAJOR_SHORTCUT) > -1) {
-                if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
-                    Scales.MAJOR_PENTATONIC_MAJOR
-                } else {
-                    Scales.MAJOR_NATURAL_MAJOR
-                }
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PHRYGIAN_SHORTCUT) > -1) {
-                Scales.MAJOR_PHRYGIAN
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(DORIAN_SHORTCUT) > -1) {
-                Scales.MAJOR_DORIAN
-            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LYDIAN_SHORTCUT) > -1) {
-                Scales.MAJOR_LYDIAN
+        searchForMajorScales(args)
+    }
+}
+
+fun searchForMajorScales(args: Array<String>): Scales {
+    return try {
+        if (args[ArgsOrder.SCALE].lowercase().indexOf(MINOR_SHORTCUT) > -1) {
+            if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
+                Scales.MAJOR_PENTATONIC_MINOR
             } else {
-                if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
-                    Scales.MAJOR_PENTATONIC_MINOR
-                } else {
-                    Scales.MAJOR_NATURAL_MINOR
-                }
+                Scales.MAJOR_NATURAL_MINOR
             }
-        } catch (ignored: IndexOutOfBoundsException) {
-            Scales.MAJOR_NATURAL_MAJOR
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PHRYGIAN_SHORTCUT) > -1) {
+            Scales.MAJOR_PHRYGIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(DORIAN_SHORTCUT) > -1) {
+            Scales.MAJOR_DORIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LYDIAN_SHORTCUT) > -1) {
+            Scales.MAJOR_LYDIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(MIXOLYDIAN_SHORTCUT) > -1) {
+            Scales.MAJOR_MIXOLYDIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LOCRIAN_SHORTCUT) > -1) {
+            Scales.MAJOR_LOCRIAN
+        } else {
+            if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
+                Scales.MAJOR_PENTATONIC_MAJOR
+            } else {
+                Scales.MAJOR_NATURAL_MAJOR
+            }
         }
+    } catch (ignored: IndexOutOfBoundsException) {
+        Scales.MAJOR_NATURAL_MAJOR
+    }
+}
+
+
+fun searchForMinorScales(args: Array<String>): Scales {
+    return try {
+        if (args[ArgsOrder.SCALE].lowercase().indexOf(MAJOR_SHORTCUT) > -1) {
+            if (args[ArgsOrder.SCALE].lowercase().indexOf(HARMONIC_SHORTCUT) > -1) {
+                Scales.MINOR_HARMONIC_MAJOR
+            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
+                Scales.MINOR_PENTATONIC_MAJOR
+            } else {
+                Scales.MINOR_NATURAL_MAJOR
+            }
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(BLUES_SHORTCUT) > -1) {
+            Scales.MINOR_BLUES
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(DORIAN_SHORTCUT) > -1) {
+            Scales.MINOR_DORIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LYDIAN_SHORTCUT) > -1) {
+            Scales.MINOR_LYDIAN
+        } else {
+            if (args[ArgsOrder.SCALE].lowercase().indexOf(HARMONIC_SHORTCUT) > -1) {
+                Scales.MINOR_HARMONIC_MINOR
+            } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PENTATONIC_SHORTCUT) > -1) {
+                Scales.MINOR_PENTATONIC_MINOR
+            } else {
+                Scales.MINOR_NATURAL_MINOR
+            }
+        }
+    } catch (ignored: IndexOutOfBoundsException) {
+        Scales.MINOR_NATURAL_MINOR
     }
 }
 

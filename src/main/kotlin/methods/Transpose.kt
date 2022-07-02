@@ -1,6 +1,7 @@
 package methods
 
 import PocketScaleCalculator
+import constants.DEFAULT_OCTAVE
 import constants.PO_BUTTONS_TO_OCTAVE_DOWN
 import constants.PO_NOTES_BUTTONS_COUNT
 import constants.notesOrder
@@ -10,9 +11,21 @@ fun IntArray.transpose(semitones: Int) = IntArray(size) { PO_NOTES_BUTTONS_COUNT
 
 fun Int.octaveDown() = this + PO_BUTTONS_TO_OCTAVE_DOWN
 
+fun Int.getListOfRootKeyIndexesForBothOctaves() = listOf(this, this.octaveDown())
+
+fun Int.getListOfOutOfScaleIndexesForBothOctaves() = listOf(this, this.octaveDown())
+
+fun IntArray.getListOfOutOfScaleIndexesForBothOctaves(): List<Int> {
+    var list: List<Int> = mutableListOf()
+    this.forEach {
+        list = list.plus(it).plus(it.octaveDown())
+    }
+    return list
+}
+
 @SuppressWarnings("MagicNumber")
 fun String.transposeOctave(semitones: Int): Int {
-    var octave = if (this.last().isDigit()) this.last().digitToInt() else 2
+    var octave = if (this.last().isDigit()) this.last().digitToInt() else DEFAULT_OCTAVE
     when (notesOrder.indexOf(dropOctave().uppercase()) + semitones) {
         in 12..23 -> octave++
         // in 0..11 -> octave

@@ -9,9 +9,9 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 ## v.0.8 changelist:
 
-* added poScale app argument & option(major/minor), applicable only PO-35 only.
+* added poScale app argument & option(major*/minor), *applicable only PO-35/137 only.
 * added support for po-35/137 Major scales: Major (Natural & Pentatonic) / Minor (Natural & Pentatonic) / Dorian /
-  Lydian /Phrygian
+  Lydian / Mixolydian / Locrian / Phrygian
 
 ## v.0.7 changelist:
 
@@ -34,6 +34,8 @@ Current supported scales for PO-35/137 with Major scale setting:
 * Minor (Natural & Pentatonic)
 * Dorian
 * Lydian
+* Mixolydian
+* Locrian
 * Phrygian
 
 Dependencies: Prior to run this application you need to
@@ -55,7 +57,7 @@ Also, you can use additional arguments for starting the app with specific option
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
 4. PO model UI(33/35) (default is 33)
-5. PO scale(major/minor) (default is Minor, option is applicable for PO-35 model only)
+5. PO scale(major*/minor) (default is Minor, option is applicable for PO-35/137 models only)
 
 For example, starting the app with 'f majpe y 35 maj' arguments will start app with F Major Pentatonic setting, missing
 hanger option, PO-35 model UI and Major PO-35 device scale setting. Please make sure you separate arguments with space

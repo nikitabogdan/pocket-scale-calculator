@@ -8,6 +8,7 @@ import constants.HEADER_ABOUT
 import constants.HEADER_DESCRIPTION
 import constants.HEADER_ERROR
 import constants.HEADER_FILLER_SIGN
+import constants.HEADER_SCALES
 import constants.HEADER_SUPPORT
 import constants.INDENT
 import constants.OUT_OF_SCALE_KEY_DEFINITION
@@ -85,19 +86,20 @@ fun printDescription() {
     println("with [] brackets are root notes for your scale.")
     println("Empty -- notes are outside of calculated scale.")
     println("")
-    println("  Currently supported scales are: ")
-    println("    – Minor (Natural, Harmonic & Pentatonic)")
-    println("    – Major (Natural, Harmonic & Pentatonic)")
-    println("    – ${Scales.MINOR_BLUES.scaleName}")
-    println("    – ${Scales.MINOR_DORIAN.scaleName}")
-    println("    – ${Scales.MINOR_LYDIAN.scaleName}")
-    println("Should work the same with PO-35 / PO-137 models")
-    println("with Minor scale picked on the device.")
+    println("Currently supported scales are: ")
+    println("  – Minor (Natural, Harmonic & Pentatonic)")
+    println("  – Major (Natural, Harmonic & Pentatonic)")
+    println("  – ${Scales.MINOR_BLUES.scaleName}")
+    println("  – ${Scales.MINOR_DORIAN.scaleName}")
+    println("  – ${Scales.MINOR_LYDIAN.scaleName}")
+    println("and lots of others.")
     println("")
-    println("  Additional commands: ")
-    println("  'options' - set 'snap off hanger' & PO model")
-    println("  'info' - more info/about section")
-    println("  'off' - exit app")
+    println("Additional commands: ")
+    println("  – 'options': set 'snap off hanger', PO model")
+    println("& PO scale (applicable for PO-35 only) settings")
+    println("  – 'scales': get full list of supported scales")
+    println("  – 'info': more info/about section")
+    println("  – 'off': exit app")
     println("")
     println("To start app with specific default scale and ")
     println("options please use following arguments list ")
@@ -109,13 +111,35 @@ fun printDescription() {
     printFooter()
 }
 
+fun printScales() {
+    printHeader(HEADER_SCALES)
+    println("Currently supported Minor scales are: ")
+    println("  – Minor (Natural, Harmonic & Pentatonic)")
+    println("  – Major (Natural, Harmonic & Pentatonic)")
+    println("  – ${Scales.MINOR_BLUES.scaleName}")
+    println("  – ${Scales.MINOR_DORIAN.scaleName}")
+    println("  – ${Scales.MINOR_LYDIAN.scaleName}")
+    println("")
+    println("Currently supported Major scales are*: ")
+    println("  – Major (Natural & Pentatonic)")
+    println("  – Minor (Natural & Pentatonic)")
+    println("  – ${Scales.MAJOR_DORIAN.scaleName}")
+    println("  – ${Scales.MAJOR_LYDIAN.scaleName}")
+    println("  – ${Scales.MAJOR_MIXOLYDIAN.scaleName}")
+    println("  – ${Scales.MAJOR_LOCRIAN.scaleName}")
+    println("  – ${Scales.MAJOR_PHRYGIAN.scaleName}")
+    println("")
+    println("* applicable for PO-35/137 series only")
+    printFooter()
+}
+
 fun printAbout() {
     printHeader(HEADER_ABOUT)
     println("  Pocket Scale Calculator. App version: $APP_VERSION")
     println("For Teenage Engineering PO-33 / PO-133 and, ")
     println("partially, PO-35 / PO-137 series (Minor only)")
     println("https://teenage.engineering/products/po")
-    println("Inspired by www.punkyv4n.me/po-33-scale-app")
+    println("Inspired by https://punkyv4n.me/po-33-scale-app")
     println("Dev: Nikita Bogdan  Email: nikita.bogdan@me.com")
     println("github.com/nikitabogdan/pocket-scale-calculator")
     printFooter()
@@ -147,7 +171,7 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
         "@@@@   $MODEL       *#OO°#°oO          @#   @@@@\n" +
         "@@@@          ...................     °°   @@@@\n" +
         "@@@@   #################################   @@@@\n" +
-        "@@@@   @@  $PO_SCALE ##   @@@@\n" +
+        "@@@@   ##  $PO_SCALE ##   @@@@\n" +
         "@@@@   ## $SCALE_NAME ##   @@@@\n" +
         "@@@@  .## $SAMPLE_KEY ##   @@@@\n" +
         "@@@@  .##                             ##   @@@@\n" +

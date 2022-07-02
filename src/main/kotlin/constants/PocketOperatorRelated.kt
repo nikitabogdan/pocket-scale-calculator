@@ -1,7 +1,5 @@
 package constants
 
-import methods.transpose
-
 object Notes {
     const val C = "C"
     const val C_SHARP = "C#"
@@ -32,29 +30,34 @@ val notesOrder: Array<String> = arrayOf(
     Notes.B
 )
 
+object ScaleNames {
+    const val MAJOR_NATURAL = "Major (Natural)"
+    const val MAJOR_HARMONIC = "Major (Harmonic)"
+    const val MAJOR_PENTATONIC = "Major (Pentatonic)"
+    const val MINOR_NATURAL = "Minor (Natural)"
+    const val MINOR_HARMONIC = "Minor (Harmonic)"
+    const val MINOR_PENTATONIC = "Minor (Pentatonic)"
+    const val BLUES = "Blues"
+    const val DORIAN = "Dorian"
+    const val LYDIAN = "Lydian"
+    const val MIXOLYDIAN = "Mixolydian"
+    const val LOCRIAN = "Locrian"
+    const val PHRYGIAN = "Phrygian"
+}
+
 const val MINOR_TO_MAJOR_TRANSPOSE_SHIFT = -3
 const val MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT = -5
 const val MINOR_TO_LYDIAN_TRANSPOSE_SHIFT = -8
 
-const val MAJOR_TO_MINOR_PHRYGIAN_TRANSPOSE_SHIFT = -9
-const val MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT = -5
 const val MAJOR_TO_DORIAN_TRANSPOSE_SHIFT = -2
+const val MAJOR_TO_PHRYGIAN_TRANSPOSE_SHIFT = -4
+const val MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT = -5
+const val MAJOR_TO_MIXOLYDIAN_TRANSPOSE_SHIFT = -7
+const val MAJOR_TO_MINOR_TRANSPOSE_SHIFT = -9
+const val MAJOR_TO_LOCRIAN_TRANSPOSE_SHIFT = -11
 
 const val PO_BUTTONS_TO_OCTAVE_DOWN = 8
 const val PO_NOTES_BUTTONS_COUNT = 16
-
-@SuppressWarnings("MagicNumber")
-object TransposeDiagrams {
-    val po33Minor = intArrayOf(7, 8, 10, 11, 0, 2, 3, 5, -5, -4, -2, -1, -12, -10, -9, -7)
-    val po33Major = po33Minor.transpose(MINOR_TO_MAJOR_TRANSPOSE_SHIFT)
-    val po33BluesDorian = po33Minor.transpose(MINOR_TO_BLUES_DORIAN_TRANSPOSE_SHIFT)
-    val po33Lydian = po33Minor.transpose(MINOR_TO_LYDIAN_TRANSPOSE_SHIFT)
-
-    val po35Major = intArrayOf(7, 9, 10, 11, 0, 2, 4, 5, -5, -3, -2, -1, -12, -10, -8, -7)
-    val po35MinorPhrygian = po35Major.transpose(MAJOR_TO_MINOR_PHRYGIAN_TRANSPOSE_SHIFT)
-    val po35Lydian = po35Major.transpose(MAJOR_TO_LYDIAN_TRANSPOSE_SHIFT)
-    val po35Dorian = po35Major.transpose(MAJOR_TO_DORIAN_TRANSPOSE_SHIFT)
-}
 
 object ButtonIndexes {
     const val BT01 = 0

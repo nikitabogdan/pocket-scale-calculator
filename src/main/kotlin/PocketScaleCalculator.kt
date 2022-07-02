@@ -18,6 +18,7 @@ import constants.helpKeywordsList
 import constants.notesOrder
 import constants.optionsKeywordsList
 import constants.prepareUnrecognisedInputErrorMessage
+import constants.scalesKeywordsList
 import constants.supportKeywordsList
 import methods.dropOctave
 import methods.getPOModelOption
@@ -31,6 +32,7 @@ import methods.printDescription
 import methods.printErrorMessage
 import methods.printHeader
 import methods.printInputMessage
+import methods.printScales
 import methods.printSupport
 import methods.transposeNotesGroup
 import methods.userInputHasText
@@ -57,6 +59,7 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
             when (inputArgs[ArgsOrder.ROOT_KEY_OR_COMMAND_NAME].lowercase()) {
                 in helpKeywordsList -> printDescription()
                 in optionsKeywordsList -> setOptions()
+                in scalesKeywordsList -> printScales()
                 in aboutKeywordsList -> printAbout()
                 in supportKeywordsList -> printSupport()
                 in exitKeywordsList -> terminate()
