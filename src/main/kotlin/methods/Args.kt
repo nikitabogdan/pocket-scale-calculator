@@ -82,6 +82,12 @@ fun searchForMinorScales(args: Array<String>): Scales {
             Scales.MINOR_DORIAN
         } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LYDIAN_SHORTCUT) > -1) {
             Scales.MINOR_LYDIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(MIXOLYDIAN_SHORTCUT) > -1) {
+            Scales.MINOR_MIXOLYDIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(LOCRIAN_SHORTCUT) > -1) {
+            Scales.MINOR_LOCRIAN
+        } else if (args[ArgsOrder.SCALE].lowercase().indexOf(PHRYGIAN_SHORTCUT) > -1) {
+            Scales.MINOR_PHRYGIAN
         } else {
             if (args[ArgsOrder.SCALE].lowercase().indexOf(HARMONIC_SHORTCUT) > -1) {
                 Scales.MINOR_HARMONIC_MINOR

@@ -12,6 +12,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 * added poScale app argument & option(major*/minor), *applicable only PO-35/137 only.
 * added support for po-35/137 Major scales: Major (Natural & Pentatonic) / Minor (Natural & Pentatonic) / Dorian /
   Lydian / Mixolydian / Locrian / Phrygian
+* added support for Minor scales: Mixolydian / Locrian / Phrygian
 
 ## v.0.7 changelist:
 
@@ -27,6 +28,9 @@ Current supported scales for PO-33/133 & PO-35/137 with Minor scale setting:
 * Blues
 * Dorian
 * Lydian
+* Mixolydian
+* Locrian
+* Phrygian
 
 Current supported scales for PO-35/137 with Major scale setting:
 

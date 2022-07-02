@@ -55,7 +55,7 @@ const val HEADER_DESCRIPTION = "DESCRIPTION"
 const val HEADER_OPTIONS = "OPTIONS"
 const val HEADER_SUPPORT = "SUPPORT"
 const val HEADER_ABOUT = "ABOUT"
-const val HEADER_SCALES = "SCALES"
+const val HEADER_SCALES = "SUPPORTED SCALES"
 
 const val SAMPLE_KEY_TEXT = "Sample key: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
