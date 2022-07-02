@@ -86,7 +86,7 @@ fun printDescription() {
     println("with [] brackets are root notes for your scale.")
     println("Empty -- notes are outside of calculated scale.")
     println("")
-    println("Currently supported scales are: ")
+    println("Supported scales are: ")
     println("  – Minor (Natural, Harmonic & Pentatonic)")
     println("  – Major (Natural, Harmonic & Pentatonic)")
     println("  – ${Scales.MINOR_BLUES.scaleName}")
