@@ -2,8 +2,11 @@ package methods
 
 import PocketScaleCalculator
 import constants.APP_VERSION
+import constants.BLUES_SHORTCUT
 import constants.ButtonIndexes
+import constants.DORIAN_SHORTCUT
 import constants.DOUBLE_INDENT
+import constants.HARMONIC_SHORTCUT
 import constants.HEADER_ABOUT
 import constants.HEADER_DESCRIPTION
 import constants.HEADER_ERROR
@@ -11,7 +14,14 @@ import constants.HEADER_FILLER_SIGN
 import constants.HEADER_SCALES
 import constants.HEADER_SUPPORT
 import constants.INDENT
+import constants.LOCRIAN_SHORTCUT
+import constants.LYDIAN_SHORTCUT
+import constants.MAJOR_SHORTCUT
+import constants.MINOR_SHORTCUT
+import constants.MIXOLYDIAN_SHORTCUT
 import constants.OUT_OF_SCALE_KEY_DEFINITION
+import constants.PENTATONIC_SHORTCUT
+import constants.PHRYGIAN_SHORTCUT
 import constants.Placeholders.BT01
 import constants.Placeholders.BT02
 import constants.Placeholders.BT03
@@ -91,7 +101,6 @@ fun printDescription() {
     println("  – Major (Natural, Harmonic & Pentatonic)")
     println("  – ${Scales.MINOR_BLUES.scaleName}")
     println("  – ${Scales.MINOR_DORIAN.scaleName}")
-    println("  – ${Scales.MINOR_LYDIAN.scaleName}")
     println("and lots of others.")
     println("")
     println("Additional commands: ")
@@ -114,29 +123,29 @@ fun printDescription() {
 fun printScales() {
     printHeader(HEADER_SCALES)
     println("  Minor:")
-    println("  – ${Scales.MINOR_NATURAL_MINOR.scaleName}")
-    println("  – ${Scales.MINOR_HARMONIC_MINOR.scaleName}")
-    println("  – ${Scales.MINOR_PENTATONIC_MINOR.scaleName}")
-    println("  – ${Scales.MINOR_NATURAL_MAJOR.scaleName}")
-    println("  – ${Scales.MINOR_HARMONIC_MAJOR.scaleName}")
-    println("  – ${Scales.MINOR_PENTATONIC_MAJOR.scaleName}")
-    println("  – ${Scales.MINOR_BLUES.scaleName}")
-    println("  – ${Scales.MINOR_DORIAN.scaleName}")
-    println("  – ${Scales.MINOR_LYDIAN.scaleName}")
-    println("  – ${Scales.MINOR_MIXOLYDIAN.scaleName}")
-    println("  – ${Scales.MINOR_LOCRIAN.scaleName}")
-    println("  – ${Scales.MINOR_PHRYGIAN.scaleName}")
+    println("  – ${Scales.MINOR_NATURAL_MINOR.scaleName} [shortcut: ${MINOR_SHORTCUT}]")
+    println("  – ${Scales.MINOR_HARMONIC_MINOR.scaleName} [shortcut: $MINOR_SHORTCUT$HARMONIC_SHORTCUT]")
+    println("  – ${Scales.MINOR_PENTATONIC_MINOR.scaleName} [shortcut: $MINOR_SHORTCUT$PENTATONIC_SHORTCUT]")
+    println("  – ${Scales.MINOR_NATURAL_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT]")
+    println("  – ${Scales.MINOR_HARMONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$HARMONIC_SHORTCUT]")
+    println("  – ${Scales.MINOR_PENTATONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]")
+    println("  – ${Scales.MINOR_BLUES.scaleName} [shortcut: $BLUES_SHORTCUT]")
+    println("  – ${Scales.MINOR_DORIAN.scaleName} [shortcut: $DORIAN_SHORTCUT]")
+    println("  – ${Scales.MINOR_LYDIAN.scaleName} [shortcut: $LYDIAN_SHORTCUT]")
+    println("  – ${Scales.MINOR_MIXOLYDIAN.scaleName} [shortcut: $MIXOLYDIAN_SHORTCUT]")
+    println("  – ${Scales.MINOR_LOCRIAN.scaleName} [shortcut: $LOCRIAN_SHORTCUT]")
+    println("  – ${Scales.MINOR_PHRYGIAN.scaleName} [shortcut: $PHRYGIAN_SHORTCUT]")
     println("")
     println("  Major*:")
-    println("  – ${Scales.MINOR_NATURAL_MAJOR.scaleName}")
-    println("  – ${Scales.MINOR_PENTATONIC_MAJOR.scaleName}")
-    println("  – ${Scales.MINOR_NATURAL_MINOR.scaleName}")
-    println("  – ${Scales.MINOR_PENTATONIC_MINOR.scaleName}")
-    println("  – ${Scales.MAJOR_DORIAN.scaleName}")
-    println("  – ${Scales.MAJOR_LYDIAN.scaleName}")
-    println("  – ${Scales.MAJOR_MIXOLYDIAN.scaleName}")
-    println("  – ${Scales.MAJOR_LOCRIAN.scaleName}")
-    println("  – ${Scales.MAJOR_PHRYGIAN.scaleName}")
+    println("  – ${Scales.MAJOR_NATURAL_MAJOR.scaleName} [shortcut: ${MAJOR_SHORTCUT}]")
+    println("  – ${Scales.MAJOR_PENTATONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]")
+    println("  – ${Scales.MAJOR_NATURAL_MINOR.scaleName} [shortcut: ${MINOR_SHORTCUT}]")
+    println("  – ${Scales.MAJOR_PENTATONIC_MINOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]")
+    println("  – ${Scales.MAJOR_DORIAN.scaleName} [shortcut: $DORIAN_SHORTCUT]")
+    println("  – ${Scales.MAJOR_LYDIAN.scaleName} [shortcut: $LYDIAN_SHORTCUT]")
+    println("  – ${Scales.MAJOR_MIXOLYDIAN.scaleName} [shortcut: $MIXOLYDIAN_SHORTCUT]")
+    println("  – ${Scales.MAJOR_LOCRIAN.scaleName} [shortcut: $LOCRIAN_SHORTCUT]")
+    println("  – ${Scales.MAJOR_PHRYGIAN.scaleName} [shortcut: $PHRYGIAN_SHORTCUT]")
     println("")
     println("* applicable for PO-35/137 series only")
     printFooter()
