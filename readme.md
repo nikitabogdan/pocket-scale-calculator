@@ -7,6 +7,11 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 <img width="733" alt="terminal profile icon" src="https://user-images.githubusercontent.com/107914638/174764479-71575b0c-8d04-44ac-a7aa-f6825d45ce23.png">
 
+## v0.8.2
+
+* Reduced console window size to 41 chars (cut unused 3 chars space from the both sides).
+* Reworked text output methods.
+
 ## v0.8.1
 
 * Added shortcuts for faster accessing scales.

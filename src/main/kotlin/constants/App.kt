@@ -1,7 +1,9 @@
 package constants
 
+import PocketScaleCalculator
 import types.POScales
 import types.PocketOperators
+import types.Scales
 
 const val APP_VERSION = "0.8"
 const val ARGS_SEPARATOR = " "
@@ -37,7 +39,7 @@ const val MIXOLYDIAN_SHORTCUT = "mix"
 const val LOCRIAN_SHORTCUT = "lo"
 const val YES_SHORTCUT = "y"
 
-const val WINDOW_WIDTH = 47
+const val WINDOW_WIDTH = 41
 const val HEADER_FILLER_SIGN = "@"
 const val INDENT = " "
 const val DOUBLE_INDENT = "  "
@@ -61,6 +63,105 @@ const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
 const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (33/35): "
 const val PO_SCALE_OPTION_MESSAGE = "Pocket operator scale? (major/minor): "
+
+val DESCRIPTION_MESSAGE_TEXT =
+    "  Type something like 'd# maj' for D# Major or 'G5 MinH' for Harmonic G Minor or 'a# map' for " +
+            "Pentatonic A# Major, or F#3 B for F# Blues and press enter. Please make sure you separate " +
+            "root key & scale with space key, which is used to split input arguments. You could see found " +
+            "scale on the ASCII-PO display and sample key to record into your PO to use this scale. Notes " +
+            "with [] brackets are root notes for your scale. Empty -- notes are outside of calculated scale. " +
+            "Supported scales are: Minor (Natural, Harmonic & Pentatonic), " +
+            "Major (Natural, Harmonic & Pentatonic), ${Scales.MINOR_BLUES.scaleName}, " +
+            "${Scales.MINOR_DORIAN.scaleName} and lots of others. \nAdditional commands:\n" +
+            "'options' – set snap off hanger, PO model & PO scale (applicable for PO-35 only) settings; " +
+            "'scales' – get full list of supported scales; " +
+            "'info' – more info/about section; 'off' – exit app;\n\n" +
+            "To start app with specific default scale and options please use following arguments list: " +
+            "1:root note, 2:scale, 3:snap off hanger (y/n), 4:PO model (33/35+. For example: F MajP Y 35 " +
+            "will start app with F Major Pentatonic setting, missing hanger option and PO-35 model UI. "
+
+val SCALES_MESSAGE_TEXT =
+    "  Minor:\n" +
+            "  – ${Scales.MINOR_NATURAL_MINOR.scaleName} [shortcut: ${MINOR_SHORTCUT}]\n" +
+            "  – ${Scales.MINOR_HARMONIC_MINOR.scaleName} [shortcut: $MINOR_SHORTCUT$HARMONIC_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_PENTATONIC_MINOR.scaleName} [shortcut: $MINOR_SHORTCUT$PENTATONIC_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_NATURAL_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_HARMONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$HARMONIC_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_PENTATONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_BLUES.scaleName} [shortcut: $BLUES_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_DORIAN.scaleName} [shortcut: $DORIAN_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_LYDIAN.scaleName} [shortcut: $LYDIAN_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_MIXOLYDIAN.scaleName} [shortcut: $MIXOLYDIAN_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_LOCRIAN.scaleName} [shortcut: $LOCRIAN_SHORTCUT]\n" +
+            "  – ${Scales.MINOR_PHRYGIAN.scaleName} [shortcut: $PHRYGIAN_SHORTCUT]\n\n" +
+            "  Major*:\n" +
+            "  – ${Scales.MAJOR_NATURAL_MAJOR.scaleName} [shortcut: ${MAJOR_SHORTCUT}]\n" +
+            "  – ${Scales.MAJOR_PENTATONIC_MAJOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_NATURAL_MINOR.scaleName} [shortcut: ${MINOR_SHORTCUT}]\n" +
+            "  – ${Scales.MAJOR_PENTATONIC_MINOR.scaleName} [shortcut: $MAJOR_SHORTCUT$PENTATONIC_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_DORIAN.scaleName} [shortcut: $DORIAN_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_LYDIAN.scaleName} [shortcut: $LYDIAN_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_MIXOLYDIAN.scaleName} [shortcut: $MIXOLYDIAN_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_LOCRIAN.scaleName} [shortcut: $LOCRIAN_SHORTCUT]\n" +
+            "  – ${Scales.MAJOR_PHRYGIAN.scaleName} [shortcut: $PHRYGIAN_SHORTCUT]\n\n" +
+            "* applicable for PO-35/137 series only"
+
+const val ABOUT_MESSAGE_TEXT =
+    "  Pocket Scale Calculator. Version: $APP_VERSION \n For Teenage Engineering PO-33 / PO-133 and, " +
+            "partially, PO-35 / PO-137 series (Major/Minor only) https://teenage.engineering/products/po " +
+            "Inspired by https://punkyv4n.me/po-33-scale-app \nDev: Nikita Bogdan \nEmail: nikita.bogdan@me.com \n" +
+            "Github: nikitabogdan/pocket-scale-calculator"
+
+const val SUPPORT_MESSAGE_TEXT =
+    "If you enjoyed Pocket Scale Calculator, you can support development of the next app versions. " +
+            "Donations could be accepted to the following xrp address: rD8aqf3YcxYZ3Lzv9vuoqeTfmgb4e7TdXm"
+
+fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
+    "                                         \n" +
+            "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+} else {
+    "                                         \n" +
+            "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
+            "@@POCKET@°                      °@@@@@@@@\n" +
+            "@@SCALE@   .@@@@@@@@@@@@@@@@@@.   @@@@@@@\n" +
+            "@@@CALC@   .@@@@@@@@@@@@@@@@@#.   @@@@@@@\n" +
+            "@@@@@@@@@.    pocket operator   .@@@@@@@@\n" +
+            "@@@@@@@@@O**o*  *****o***  ***o#@@@@@@@@@\n"
+
+} +
+        "@                °#  O°o*          oo   @\n" +
+        "@   ${Placeholders.MODEL}       *#OO°#°oO          @#   @\n" +
+        "@          ...................     °°   @\n" +
+        "@   #################################   @\n" +
+        "@   ##  ${Placeholders.PO_SCALE} ##   @\n" +
+        "@   ## ${Placeholders.SCALE_NAME} ##   @\n" +
+        "@  .## ${Placeholders.SAMPLE_KEY} ##   @\n" +
+        "@  .##                             ##   @\n" +
+        "@.  ##  ${ROOT_KEY_SURROUND_DEFINITION}: root; ${OUT_OF_SCALE_KEY_DEFINITION}: out of scale ##  .@\n" +
+        "@*  *o°#########################Ooo*o  *@\n" +
+        "@.       ..''''''''''''''''''''        .@\n" +
+        "@   .*** °'.ooo.  .ooo.  #°@##o #°@@Oo  @\n" +
+        "@  .@*°@o °@*.#@  @O O#  @*@@°# @#@@°@  @\n" +
+        "@   'ooO'  'OoO°  'OoO°  o*oo@* o**o#*  @\n" +
+        "@                                 ,_.   @\n" +
+        "@                                @O.@#  @\n" +
+        "@   ${Placeholders.BT01}  ${Placeholders.BT02}  ${Placeholders.BT03}  ${Placeholders.BT04}   'OoO*  @\n" +
+        "@                                 °°'   @\n" +
+        "@                                 ,o.   @\n" +
+        "@                                @O.@#  @\n" +
+        "@   ${Placeholders.BT05}  ${Placeholders.BT06}  ${Placeholders.BT07}  ${Placeholders.BT08}   'OoO*  @\n" +
+        "@                                 °'    @\n" +
+        "@                                 oo*.  @\n" +
+        "@                                @O.@#  @\n" +
+        "@   ${Placeholders.BT09}  ${Placeholders.BT10}  ${Placeholders.BT11}  ${Placeholders.BT12}   'OoO*  @\n" +
+        "@                                  °°   @\n" +
+        "@                                 ,o.   @\n" +
+        "@                                @O.@#  @\n" +
+        "@   ${Placeholders.BT13}  ${Placeholders.BT14}  ${Placeholders.BT15}  ${Placeholders.BT16}   'OoO*  @\n" +
+        "@                                       @\n" +
+        "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
+        "                                         "
+
 
 fun preparePODeviceScaleText(poModel: PocketOperators, scale: POScales) =
     "PO-${poModel.modelIndex} Scale: ${scale.scaleName}"
