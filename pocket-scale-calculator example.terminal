@@ -32,9 +32,9 @@
 	<key>ShowWindowSettingsNameInTitle</key>
 	<true/>
 	<key>columnCount</key>
-	<integer>47</integer>
+	<integer>41</integer>
 	<key>name</key>
-	<string>pocket scale calculator</string>
+	<string>pocket-scale-calculator 1</string>
 	<key>noWarnProcesses</key>
 	<array>
 		<dict>
