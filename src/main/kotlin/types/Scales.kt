@@ -191,5 +191,25 @@ enum class Scales(
         ButtonIndexes.BT03.getListOfOutOfScaleIndexesForBothOctaves(),
         POScales.MAJOR.transposeDiagram.transpose(MAJOR_TO_PHRYGIAN),
         MAJOR_TO_PHRYGIAN
+    ),
+    BLUES_BLUES(
+        ScaleNames.BLUES,
+        ButtonIndexes.BT05.getListOfRootKeyIndexesForBothOctaves(),
+        intArrayOf(
+            ButtonIndexes.BT04,
+            ButtonIndexes.BT07
+        ).getListOfOutOfScaleIndexesForBothOctaves(),
+        POScales.BLUES.transposeDiagram,
+        NO_TRANSPOSE
+    ),
+    ARAB(
+        ScaleNames.ARAB,
+        ButtonIndexes.BT05.getListOfRootKeyIndexesForBothOctaves(),
+        intArrayOf(
+            ButtonIndexes.BT01,
+            ButtonIndexes.BT06
+        ).getListOfOutOfScaleIndexesForBothOctaves(),
+        POScales.ARAB.transposeDiagram,
+        NO_TRANSPOSE
     )
 }

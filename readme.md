@@ -7,6 +7,12 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 <img width="733" alt="terminal profile icon" src="https://user-images.githubusercontent.com/107914638/174764479-71575b0c-8d04-44ac-a7aa-f6825d45ce23.png">
 
+## v0.9
+
+* Added missing scales for po-35/137 models (Blues & Arab)
+* Modified & added tests to handle additional poScale argument
+* Updated default terminal profile to fit snap-off hanger option & resized window.
+
 ## v0.8.2
 
 * Reduced console window size to 41 chars (cut unused 3 chars space from the both sides).
@@ -75,6 +81,8 @@ Supported scales for PO-35/137 with Major scale setting:
 * Locrian
 * Phrygian
 
+PO-35/137 Blues & Arab scale settings are now supported as well.
+
 To use app please type root key & desired scale (for example: F Blues) and press enter. Found scale name will appear on
 the second line of the little ascii po display. The scale itself will be shown on the ascii pocket operator note
 buttons. Sample key for the found scale will be shown on the third line of ascii po display. This is the sample note you
@@ -110,7 +118,7 @@ You can use additional arguments for starting the app with specific options:
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
 4. PO model UI(33/35) (default is 33)
-5. PO scale(major*/minor) (default is Minor, *option is applicable for PO-35/137 models only)
+5. PO scale(major/minor/blues/arab) (default is Minor, option is applicable for PO-35/137 models only)
 
 For example, starting the app with 'f majpe y 35 maj' arguments will start app with F Major Pentatonic setting, missing
 hanger option, PO-35 model UI and Major PO-35 device scale setting. Please make sure you separate arguments with space
@@ -122,7 +130,4 @@ button.
 * "options", "preferences" - access options menu
 * "scales", "list" - print full list of supported scales & shortcuts section
 * "about", "info" - print additional app info section
-* "donate", "support" - print support development section
 * "exit", "quit", "off", "terminate" - exit app
-
-_*PO-35/137 scaling functionality is yet limited to Major and Minor scales set on the device itself._

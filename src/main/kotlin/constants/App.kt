@@ -5,7 +5,7 @@ import types.POScales
 import types.PocketOperators
 import types.Scales
 
-const val APP_VERSION = "0.8"
+const val APP_VERSION = "0.9"
 const val ARGS_SEPARATOR = " "
 
 object ArgsOrder {
@@ -31,7 +31,8 @@ const val HARMONIC_SHORTCUT = "h"
 const val PENTATONIC_SHORTCUT = "pe"
 const val MAJOR_SHORTCUT = "ma"
 const val MINOR_SHORTCUT = "min"
-const val BLUES_SHORTCUT = "b"
+const val BLUES_SHORTCUT = "bl"
+const val ARAB_SHORTCUT = "ar"
 const val DORIAN_SHORTCUT = "d"
 const val LYDIAN_SHORTCUT = "ly"
 const val PHRYGIAN_SHORTCUT = "ph"
@@ -62,7 +63,7 @@ const val SAMPLE_KEY_TEXT = "Sample key: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
 const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (33/35): "
-const val PO_SCALE_OPTION_MESSAGE = "Pocket operator scale? (major/minor): "
+const val PO_SCALE_OPTION_MESSAGE = "PO scale? (major/minor/blues/arab): "
 
 val DESCRIPTION_MESSAGE_TEXT =
     "  Type something like 'd# maj' for D# Major or 'G5 MinH' for Harmonic G Minor or 'a# map' for " +
@@ -104,11 +105,15 @@ val SCALES_MESSAGE_TEXT =
             "  – ${Scales.MAJOR_MIXOLYDIAN.scaleName} [shortcut: $MIXOLYDIAN_SHORTCUT]\n" +
             "  – ${Scales.MAJOR_LOCRIAN.scaleName} [shortcut: $LOCRIAN_SHORTCUT]\n" +
             "  – ${Scales.MAJOR_PHRYGIAN.scaleName} [shortcut: $PHRYGIAN_SHORTCUT]\n\n" +
+            "  Blues*:\n" +
+            "  – ${Scales.BLUES_BLUES.scaleName} [shortcut: ${BLUES_SHORTCUT}]\n\n" +
+            "  Arab*:\n" +
+            "  – ${Scales.ARAB.scaleName} [shortcut: ${ARAB_SHORTCUT}]\n\n" +
             "* applicable for PO-35/137 series only"
 
 const val ABOUT_MESSAGE_TEXT =
     "  Pocket Scale Calculator. Version: $APP_VERSION \n For Teenage Engineering PO-33 / PO-133 and, " +
-            "partially, PO-35 / PO-137 series (Major/Minor only) https://teenage.engineering/products/po " +
+            "PO-35 / PO-137 series https://teenage.engineering/products/po " +
             "Inspired by https://punkyv4n.me/po-33-scale-app \nDev: Nikita Bogdan \nEmail: nikita.bogdan@me.com \n" +
             "Github: nikitabogdan/pocket-scale-calculator"
 

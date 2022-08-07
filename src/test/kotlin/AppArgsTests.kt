@@ -3,6 +3,7 @@ import constants.YES_SHORTCUT
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import types.POScales
 import types.PocketOperators
 import types.Scales
 
@@ -27,12 +28,15 @@ class AppArgsTests {
         expectedScale: Scales = Scales.MINOR_NATURAL_MINOR,
         expectedRootKey: String = Notes.A,
         expectedSnapOffHangerOption: Boolean = false,
-        expectedPOModelOption: PocketOperators = PocketOperators.PO_33
+        expectedPOModelOption: PocketOperators = PocketOperators.PO_33,
+        expectedPOScaleOption: POScales = POScales.MINOR
+
     ) {
         assertEquals(expectedScale, this.scale)
         assertEquals(expectedRootKey, this.rootKey)
         assertEquals(expectedSnapOffHangerOption, this.snapOffHanger)
         assertEquals(expectedPOModelOption, this.poModel)
+        assertEquals(expectedPOScaleOption, this.poScale)
     }
 
     @Test
@@ -85,6 +89,24 @@ class AppArgsTests {
             expectedRootKey = testRootKey,
             expectedSnapOffHangerOption = true,
             expectedPOModelOption = poModel
+        )
+    }
+
+    @Test
+    fun `Start app with 5 args positive test`() {
+        val testRootKey = Notes.E
+        val testScale = Scales.ARAB
+        val testSnapOffHanger = YES_SHORTCUT
+        val poModel = PocketOperators.PO_35
+        val poScale = POScales.ARAB
+        PocketScaleCalculator(
+            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.modelIndex, poScale.scaleName)
+        ).executeInTestMode().assertSettings(
+            expectedScale = testScale,
+            expectedRootKey = testRootKey,
+            expectedSnapOffHangerOption = true,
+            expectedPOModelOption = poModel,
+            expectedPOScaleOption = poScale
         )
     }
 

@@ -1,5 +1,7 @@
+import constants.ARAB_SHORTCUT
 import constants.ARGS_SEPARATOR
 import constants.ArgsOrder
+import constants.BLUES_SHORTCUT
 import constants.DEFAULT_INPUT_MESSAGE
 import constants.ExitCodes
 import constants.HEADER_OFF
@@ -26,6 +28,7 @@ import methods.getPOScaleOption
 import methods.getRootKey
 import methods.getScale
 import methods.getSnapOffHangerOption
+import methods.hasText
 import methods.printAbout
 import methods.printCalculations
 import methods.printDescription
@@ -34,8 +37,8 @@ import methods.printHeader
 import methods.printInputMessage
 import methods.printScales
 import methods.printSupport
+import methods.readUserInput
 import methods.transposeNotesGroup
-import methods.userInputHasText
 import types.POScales
 import types.PocketOperators
 import types.Scales
@@ -94,15 +97,24 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
     private fun setOptions() {
         printHeader(HEADER_OPTIONS)
         printInputMessage(SNAP_OFF_HANGER_OPTION_MESSAGE)
-        this.snapOffHanger = userInputHasText(YES_SHORTCUT)
+        this.snapOffHanger = readUserInput().hasText(YES_SHORTCUT)
         printHeader(HEADER_OK)
         printInputMessage(PO_MODEL_OPTION_MESSAGE)
-        this.poModel = if (userInputHasText(PocketOperators.PO_35.modelIndex))
+        this.poModel = if (readUserInput().hasText(PocketOperators.PO_35.modelIndex))
             PocketOperators.PO_35 else PocketOperators.PO_33.also { this.poScale = POScales.MINOR }
         printHeader(HEADER_OK)
         if (poModel == PocketOperators.PO_35) {
             printInputMessage(PO_SCALE_OPTION_MESSAGE)
-            this.poScale = if (userInputHasText(MAJOR_SHORTCUT)) POScales.MAJOR else POScales.MINOR
+            val userInput = readUserInput()
+            this.poScale = if (userInput.hasText(MAJOR_SHORTCUT)) {
+                POScales.MAJOR
+            } else if (userInput.hasText(BLUES_SHORTCUT)) {
+                POScales.BLUES
+            } else if (userInput.hasText(ARAB_SHORTCUT)) {
+                POScales.ARAB
+            } else {
+                POScales.MINOR
+            }
             printHeader(HEADER_OK)
         }
     }

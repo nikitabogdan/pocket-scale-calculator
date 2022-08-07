@@ -33,6 +33,7 @@ object ScaleNames {
     const val MINOR_HARMONIC = "Minor (Harmonic)"
     const val MINOR_PENTATONIC = "Minor (Pentatonic)"
     const val BLUES = "Blues"
+    const val ARAB = "Arab"
     const val DORIAN = "Dorian"
     const val LYDIAN = "Lydian"
     const val MIXOLYDIAN = "Mixolydian"
