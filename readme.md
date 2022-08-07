@@ -11,6 +11,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 * Added missing scales for po-35/137 models (Blues & Arab)
 * Modified & added tests to handle additional poScale argument
+* Updated default terminal profile to fit snap-off hanger option & resized window.
 
 ## v0.8.2
 
