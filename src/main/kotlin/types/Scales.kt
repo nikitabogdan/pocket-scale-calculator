@@ -195,14 +195,20 @@ enum class Scales(
     BLUES_BLUES(
         ScaleNames.BLUES,
         ButtonIndexes.BT05.getListOfRootKeyIndexesForBothOctaves(),
-        listOf(ButtonIndexes.BT00),
+        intArrayOf(
+            ButtonIndexes.BT04,
+            ButtonIndexes.BT07
+        ).getListOfOutOfScaleIndexesForBothOctaves(),
         POScales.BLUES.transposeDiagram,
         NO_TRANSPOSE
     ),
     ARAB(
         ScaleNames.ARAB,
         ButtonIndexes.BT05.getListOfRootKeyIndexesForBothOctaves(),
-        listOf(ButtonIndexes.BT00),
+        intArrayOf(
+            ButtonIndexes.BT01,
+            ButtonIndexes.BT06
+        ).getListOfOutOfScaleIndexesForBothOctaves(),
         POScales.ARAB.transposeDiagram,
         NO_TRANSPOSE
     )

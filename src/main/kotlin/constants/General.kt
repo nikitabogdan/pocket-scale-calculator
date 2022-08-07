@@ -62,7 +62,6 @@ const val PO_BUTTONS_TO_OCTAVE_DOWN = 8
 const val PO_NOTES_BUTTONS_COUNT = 16
 
 object ButtonIndexes {
-    const val BT00 = 16
     const val BT01 = 0
     const val BT02 = 1
     const val BT03 = 2

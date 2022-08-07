@@ -21,7 +21,9 @@ fun String.dropOctave() = if (this.isNotEmpty()) {
 fun String.addCharsToFullLine(expectedLength: Int) =
     if (this.length < expectedLength) INDENT.repeat(expectedLength - this.length) + this else this
 
-fun userInputHasText(text: String): Boolean = readln().lowercase().indexOf(text) > -1
+fun readUserInput(): String = readln().lowercase()
+
+fun String.hasText(text: String): Boolean = this.indexOf(text) > -1
 
 fun PocketScaleCalculator.convertNotePlaceholder(
     semitones: Int, root: Boolean = false, outOfScale: Boolean = false

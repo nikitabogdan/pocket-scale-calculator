@@ -2,6 +2,7 @@ package methods
 
 
 import PocketScaleCalculator
+import constants.ARAB_SHORTCUT
 import constants.ArgsOrder
 import constants.BLUES_SHORTCUT
 import constants.DORIAN_SHORTCUT
@@ -28,11 +29,13 @@ fun PocketScaleCalculator.getRootKey(args: Array<String>) = this.also {
 }
 
 fun PocketScaleCalculator.getScale(args: Array<String>) = this.also {
-    this.scale = if (this.poScale == POScales.MINOR) {
-        searchForMinorScales(args)
-    } else {
-        searchForMajorScales(args)
-    }
+    this.scale =
+        when (this.poScale) {
+            POScales.MINOR -> searchForMinorScales(args)
+            POScales.MAJOR -> searchForMajorScales(args)
+            POScales.BLUES -> Scales.BLUES_BLUES
+            POScales.ARAB -> Scales.ARAB
+        }
 }
 
 fun searchForMajorScales(args: Array<String>): Scales {
@@ -125,7 +128,19 @@ fun PocketScaleCalculator.getPOScaleOption(args: Array<String>) = this.also {
             POScales.MINOR
         } else {
             if (args[ArgsOrder.PO_SCALE].lowercase().indexOf(MAJOR_SHORTCUT) > -1
-            ) POScales.MAJOR else POScales.MINOR
+            ) {
+                POScales.MAJOR
+            } else if (
+                args[ArgsOrder.PO_SCALE].lowercase().indexOf(BLUES_SHORTCUT) > -1
+            ) {
+                POScales.BLUES
+            } else if (
+                args[ArgsOrder.PO_SCALE].lowercase().indexOf(ARAB_SHORTCUT) > -1
+            ) {
+                POScales.ARAB
+            } else {
+                POScales.MINOR
+            }
         }
     } catch (ignored: ArrayIndexOutOfBoundsException) {
         POScales.MINOR
