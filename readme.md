@@ -5,7 +5,7 @@ for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/p
 It was inspired by [https://punkyv4n.me/po-33-scale-app](https://punkyv4n.me/po-33-scale-app/), but I wanted to make an
 ancient-looking desktop console version with pocket operator vibes, so here we are.
 
-<img width="733" alt="terminal profile icon" src="https://user-images.githubusercontent.com/107914638/174764479-71575b0c-8d04-44ac-a7aa-f6825d45ce23.png">
+<img width="600" alt="terminal profile icon compact" src="https://raw.githubusercontent.com/nikitabogdan/pocket-scale-calculator/main/terminal%20profile%20icon%20compact.png">
 
 ## v0.9
 
