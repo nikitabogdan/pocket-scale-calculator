@@ -82,7 +82,7 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
             .getScale(appArgs)
     }
 
-    private fun checkAndCalculate() {
+    fun checkAndCalculate() {
         if (validateUserInput()) {
             this.transposeNotesGroup().also {
                 this.printCalculations(it)
@@ -100,8 +100,14 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
         this.snapOffHanger = readUserInput().hasText(YES_SHORTCUT)
         printHeader(HEADER_OK)
         printInputMessage(PO_MODEL_OPTION_MESSAGE)
-        this.poModel = if (readUserInput().hasText(PocketOperators.PO_35.modelIndex))
-            PocketOperators.PO_35 else PocketOperators.PO_33.also { this.poScale = POScales.MINOR }
+        val input = readUserInput()
+        this.poModel = if (input.hasText(PocketOperators.PO_35.model))
+            PocketOperators.PO_35
+        else if (input.hasText(PocketOperators.PO_33.model)) {
+            PocketOperators.PO_33.also { this.poScale = POScales.MINOR }
+        } else {
+            PocketOperators.PO_128.also { this.poScale = POScales.MINOR }
+        }
         printHeader(HEADER_OK)
         if (poModel == PocketOperators.PO_35) {
             printInputMessage(PO_SCALE_OPTION_MESSAGE)
