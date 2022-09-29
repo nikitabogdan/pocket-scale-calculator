@@ -60,6 +60,7 @@ const val HEADER_ABOUT = "ABOUT"
 const val HEADER_SCALES = "SUPPORTED SCALES"
 
 const val SAMPLE_KEY_TEXT = "Sample key: "
+const val SCALE_KEY_TEXT = "Scale key: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
 const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (128/33/35): "

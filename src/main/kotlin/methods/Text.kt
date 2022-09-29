@@ -10,7 +10,9 @@ import constants.Placeholders.SCALE_NAME
 import constants.REGULAR_NOTE_SURROUND_DEFINITION
 import constants.ROOT_KEY_SURROUND_DEFINITION
 import constants.SAMPLE_KEY_TEXT
+import constants.SCALE_KEY_TEXT
 import constants.preparePODeviceScaleText
+import types.PocketOperators
 
 fun String.dropOctave() = if (this.isNotEmpty()) {
     if (this.last().isDigit()) this.dropLast(1) else this
@@ -45,5 +47,6 @@ fun PocketScaleCalculator.convertScaleNamePlaceholder() =
     "${rootKey.dropOctave()} ${scale.scaleName}".addCharsToFullLine(SCALE_NAME.length)
 
 fun PocketScaleCalculator.convertSampleKeyPlaceholder() =
-    "$SAMPLE_KEY_TEXT${this.transposeNote(scale.transposeShift)}".addCharsToFullLine(SAMPLE_KEY.length)
+    ((if (this.poModel == PocketOperators.PO_128) SCALE_KEY_TEXT else SAMPLE_KEY_TEXT) +
+            this.transposeNote(scale.transposeShift)).addCharsToFullLine(SAMPLE_KEY.length)
 
