@@ -83,7 +83,7 @@ class AppArgsTests {
         val testSnapOffHanger = YES_SHORTCUT
         val poModel = PocketOperators.PO_35
         PocketScaleCalculator(
-            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.modelIndex)
+            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.model)
         ).executeInTestMode().assertSettings(
             expectedScale = testScale,
             expectedRootKey = testRootKey,
@@ -100,7 +100,7 @@ class AppArgsTests {
         val poModel = PocketOperators.PO_35
         val poScale = POScales.ARAB
         PocketScaleCalculator(
-            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.modelIndex, poScale.scaleName)
+            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.model, poScale.scaleName)
         ).executeInTestMode().assertSettings(
             expectedScale = testScale,
             expectedRootKey = testRootKey,

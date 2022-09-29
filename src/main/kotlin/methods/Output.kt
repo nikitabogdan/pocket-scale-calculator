@@ -28,7 +28,6 @@ import constants.Placeholders.BT13
 import constants.Placeholders.BT14
 import constants.Placeholders.BT15
 import constants.Placeholders.BT16
-import constants.Placeholders.MODEL
 import constants.Placeholders.PO_SCALE
 import constants.Placeholders.SAMPLE_KEY
 import constants.Placeholders.SCALE_NAME
@@ -107,7 +106,6 @@ fun printSupport() {
 fun PocketScaleCalculator.printCalculations(transposedNotes: Array<String>) {
     println(
         this.prepareCalculationsDraft()
-            .replace(MODEL, this.poModel.displayName)
             .replace(PO_SCALE, this.convertDeviceScalePlaceholder())
             .replace(SCALE_NAME, this.convertScaleNamePlaceholder())
             .replace(SAMPLE_KEY, this.convertSampleKeyPlaceholder())

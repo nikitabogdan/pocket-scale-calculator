@@ -1,11 +1,15 @@
 ### I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator.
 
-This console app is a helper tool for calculating scales
-for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-33/133 & PO-35/137 series.
+This console app is a helper tool for calculating scales & note positions
+for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-128, PO-33/133 & PO-35/137 series.
 It was inspired by [https://punkyv4n.me/po-33-scale-app](https://punkyv4n.me/po-33-scale-app/), but I wanted to make an
 ancient-looking desktop console version with pocket operator vibes, so here we are.
 
 <img width="600" alt="terminal profile icon compact" src="https://raw.githubusercontent.com/nikitabogdan/pocket-scale-calculator/main/terminal%20profile%20icon%20compact.png">
+
+## v0.92
+
+* Added support for po-128 Megaman model.
 
 ## v0.9
 
@@ -60,7 +64,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 ## General info
 
-Supported scales for PO-33/133 & PO-35/137 with Minor scale setting:
+Supported scales for PO-128, PO-33/133 & PO-35/137 with Minor scale setting:
 
 * Minor (Natural, Harmonic & Pentatonic)
 * Major (Natural, Harmonic & Pentatonic)
@@ -117,7 +121,7 @@ You can use additional arguments for starting the app with specific options:
 1. root key note (default is A)
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
-4. PO model UI(33/35) (default is 33)
+4. PO model UI(33/35/128) (default is 33)
 5. PO scale(major/minor/blues/arab) (default is Minor, option is applicable for PO-35/137 models only)
 
 For example, starting the app with 'f majpe y 35 maj' arguments will start app with F Major Pentatonic setting, missing

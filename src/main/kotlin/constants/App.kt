@@ -62,7 +62,7 @@ const val HEADER_SCALES = "SUPPORTED SCALES"
 const val SAMPLE_KEY_TEXT = "Sample key: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
-const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (33/35): "
+const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (128/33/35): "
 const val PO_SCALE_OPTION_MESSAGE = "PO scale? (major/minor/blues/arab): "
 
 val DESCRIPTION_MESSAGE_TEXT =
@@ -121,6 +121,19 @@ const val SUPPORT_MESSAGE_TEXT =
     "If you enjoyed Pocket Scale Calculator, you can support development of the next app versions. " +
             "Donations could be accepted to the following xrp address: rD8aqf3YcxYZ3Lzv9vuoqeTfmgb4e7TdXm"
 
+fun PocketScaleCalculator.replaceModelPlaceholder() = when (this.poModel) {
+    PocketOperators.PO_35 ->
+        "@                °#  O°o*          oo   @\n" +
+                "@   speak       *#OO°#°oO          @#   @\n"
+    PocketOperators.PO_33 ->
+        "@                °#  O°o*          oo   @\n" +
+                "@   K.O./       *#OO°#°oO          @#   @\n"
+    PocketOperators.PO_128 ->
+        "@    °#  O°o*     MEGAMAN        ,@On   @\n" +
+                "@   *#OO°#°oO    []ッnマン       J@#L   @\n"
+
+}
+
 fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
     "                                         \n" +
             "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
@@ -132,10 +145,7 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
             "@@@CALC@   .@@@@@@@@@@@@@@@@@#.   @@@@@@@\n" +
             "@@@@@@@@@.    pocket operator   .@@@@@@@@\n" +
             "@@@@@@@@@O**o*  *****o***  ***o#@@@@@@@@@\n"
-
-} +
-        "@                °#  O°o*          oo   @\n" +
-        "@   ${Placeholders.MODEL}       *#OO°#°oO          @#   @\n" +
+} + this.replaceModelPlaceholder() +
         "@          ...................     °°   @\n" +
         "@   #################################   @\n" +
         "@   ##  ${Placeholders.PO_SCALE} ##   @\n" +
@@ -169,7 +179,7 @@ fun PocketScaleCalculator.prepareCalculationsDraft() = if (this.snapOffHanger) {
 
 
 fun preparePODeviceScaleText(poModel: PocketOperators, scale: POScales) =
-    "PO-${poModel.modelIndex} Scale: ${scale.scaleName}"
+    "PO-${poModel.model} Scale: ${scale.scaleName}"
 
 fun prepareUnrecognisedInputErrorMessage(rootKey: String) = "Input [$rootKey] is unrecognised, please try again"
 const val INCONSISTENT_ROOT_KEY_ERROR_MESSAGE = "Unable to drop octave for empty root key"

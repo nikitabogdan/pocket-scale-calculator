@@ -73,7 +73,6 @@ object ButtonIndexes {
 }
 
 object Placeholders {
-    const val MODEL = "%PON%"
     const val PO_SCALE = "DISPLAY_PLACEHOLDER_LINE1%"
     const val SCALE_NAME = "%DISPLAY_PLACEHOLDER_LINE2%"
     const val SAMPLE_KEY = "%DISPLAY_PLACEHOLDER_LINE3%"
