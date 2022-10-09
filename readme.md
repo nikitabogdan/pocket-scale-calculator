@@ -113,7 +113,24 @@ sound bank loaded into your po and make sure this note is the same as your tonic
 equals to 50. -12 semitones pitch have the value equals to 10, +7 semitones pitch have the value equals to 74 e.t.c.
 Full list of pitch shifts could be found here: 
 
-<img width="386" alt="Screenshot 2022-10-09 at 12 30 42" src="https://user-images.githubusercontent.com/107914638/194773139-54ca943f-fcbd-4afb-bf49-6837473493a9.png">
+|-st value|+/- semitones| +st value|
+| -- | --  | -- |
+| 50 |   0 | 50 |
+| 46 |   1 | 54 |
+| 43 |   2 | 57 |
+| 40 |   3 | 60 |
+| 36 |   4 | 64 |
+| 33 |   5 | 67 |
+| 30 |   6 | 70 |
+| 26 |   7 | 74 |
+| 23 |   8 | 77 |
+| 20 |   9 | 80 |
+| 16 |  10 | 84 |
+| 13 |  11 | 87 |
+| 10 |  12 | 90 |
+|  6 |  13 | 94 |
+|  3 |  14 | 97 |
+|  0 |  15 |100 |
 
 It is handy to use 2 apps launched with the same tonic & scale, but with different models, for example: po-32 & po-35.
 While pocket scale calc with po-35 model in use will show an actual scale and notes positions, another one with po-32
