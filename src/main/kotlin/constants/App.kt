@@ -61,9 +61,10 @@ const val HEADER_SCALES = "SUPPORTED SCALES"
 
 const val SAMPLE_KEY_TEXT = "Sample key: "
 const val SCALE_KEY_TEXT = "Scale key: "
+const val TONIC_KEY_PITCH_TEXT = "Tonic key pitch: "
 const val DEFAULT_INPUT_MESSAGE = "Input scale or press enter for help: "
 const val SNAP_OFF_HANGER_OPTION_MESSAGE = "Snap off hanger? (y/n): "
-const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (128/33/35): "
+const val PO_MODEL_OPTION_MESSAGE = "Pocket operator model? (32/33/35/128): "
 const val PO_SCALE_OPTION_MESSAGE = "PO scale? (major/minor/blues/arab): "
 
 val DESCRIPTION_MESSAGE_TEXT =
@@ -113,7 +114,7 @@ val SCALES_MESSAGE_TEXT =
             "* applicable for PO-35/137 series only"
 
 const val ABOUT_MESSAGE_TEXT =
-    "  Pocket Scale Calculator. Version: $APP_VERSION \n For Teenage Engineering PO-33 / PO-133 and, " +
+    "  Pocket Scale Calculator. Version: $APP_VERSION \n For Teenage Engineering PO-32, PO-33 / PO-133 and, " +
             "PO-35 / PO-137 series https://teenage.engineering/products/po " +
             "Inspired by https://punkyv4n.me/po-33-scale-app \nDev: Nikita Bogdan \nEmail: nikita.bogdan@me.com \n" +
             "Github: nikitabogdan/pocket-scale-calculator"
@@ -123,12 +124,15 @@ const val SUPPORT_MESSAGE_TEXT =
             "Donations could be accepted to the following xrp address: rD8aqf3YcxYZ3Lzv9vuoqeTfmgb4e7TdXm"
 
 fun PocketScaleCalculator.replaceModelPlaceholder() = when (this.poModel) {
-    PocketOperators.PO_35 ->
+    PocketOperators.PO_32 ->
         "@                °#  O°o*          oo   @\n" +
-                "@   speak       *#OO°#°oO          @#   @\n"
+                "@   tonic       *#OO°#°oO          @#   @\n"
     PocketOperators.PO_33 ->
         "@                °#  O°o*          oo   @\n" +
                 "@   K.O./       *#OO°#°oO          @#   @\n"
+    PocketOperators.PO_35 ->
+        "@                °#  O°o*          oo   @\n" +
+                "@   speak       *#OO°#°oO          @#   @\n"
     PocketOperators.PO_128 ->
         "@    °#  O°o*     MEGAMAN        ,@On   @\n" +
                 "@   *#OO°#°oO    []ッnマン       J@#L   @\n"

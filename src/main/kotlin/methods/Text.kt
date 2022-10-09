@@ -10,6 +10,7 @@ import constants.Placeholders.SCALE_NAME
 import constants.REGULAR_NOTE_SURROUND_DEFINITION
 import constants.SAMPLE_KEY_TEXT
 import constants.SCALE_KEY_TEXT
+import constants.TONIC_KEY_PITCH_TEXT
 import constants.TONIC_KEY_SURROUND_DEFINITION
 import constants.preparePODeviceScaleText
 import types.PocketOperators
@@ -28,7 +29,9 @@ fun readUserInput(): String = readln().lowercase()
 fun String.hasText(text: String): Boolean = this.indexOf(text) > -1
 
 fun PocketScaleCalculator.convertNotePlaceholder(
-    semitones: Int, tonic: Boolean = false, outOfScale: Boolean = false
+    semitones: Int,
+    tonic: Boolean = false,
+    outOfScale: Boolean = false
 ): String {
     val fillTonic = if (tonic) TONIC_KEY_SURROUND_DEFINITION else REGULAR_NOTE_SURROUND_DEFINITION
     val printNote = if (outOfScale) OUT_OF_SCALE_KEY_DEFINITION else this.transposeNote(semitones)
@@ -47,6 +50,9 @@ fun PocketScaleCalculator.convertScaleNamePlaceholder() =
     "${tonic.dropOctave()} ${scale.scaleName}".addCharsToFullLine(SCALE_NAME.length)
 
 fun PocketScaleCalculator.convertSampleKeyPlaceholder() =
-    ((if (this.poModel == PocketOperators.PO_128) SCALE_KEY_TEXT else SAMPLE_KEY_TEXT) +
-            this.transposeNote(scale.transposeShift)).addCharsToFullLine(SAMPLE_KEY.length)
+    (when (this.poModel) {
+        PocketOperators.PO_32 -> TONIC_KEY_PITCH_TEXT
+        PocketOperators.PO_128 -> SCALE_KEY_TEXT
+        else -> SAMPLE_KEY_TEXT
+    } + this.transposeNote(scale.transposeShift)).addCharsToFullLine(SAMPLE_KEY.length)
 

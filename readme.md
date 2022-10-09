@@ -1,11 +1,18 @@
 ### I heard you like Pocket Operators, so I made Pocket Scale Calculator for your Pocket Operator.
 
 This console app is a helper tool for calculating scales & note positions
-for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-128, PO-33/133 & PO-35/137 series.
+for [Teenage Engineering Pocket Operator](https://teenage.engineering/products/po) PO-32, PO-33/133, PO-35/137 & PO-128
+series.
 It was inspired by [https://punkyv4n.me/po-33-scale-app](https://punkyv4n.me/po-33-scale-app/), but I wanted to make an
-ancient-looking desktop console version with pocket operator vibes, so here we are.
+ancient-looking desktop console version with pocket operator vibes and extend original app functionality with more
+available settings and scales.
 
 <img width="600" alt="terminal profile icon compact" src="https://raw.githubusercontent.com/nikitabogdan/pocket-scale-calculator/main/terminal%20profile%20icon%20compact.png">
+
+## v0.93
+
+* Reused correct tonic key definition across the app (root key -> tonic)
+* Added support for po-32 Tonic model.
 
 ## v0.92
 
@@ -95,6 +102,12 @@ scale buttons marked as --. Also, the first line of ascii pocket operator displa
 setting. To change this and other settings such as 'snap-off hanger' option and PO model, please use 'options' command
 and follow menu tips.
 
+If you would like to calculate scales for PO-32, the app will work in quite other way.
+For selected tonic & scale it will show you a range of values (0..100), you might program your single sound bank in
+sequence with pitch knob to get all possible notes in the selected scale. You will need to know the default note of the
+sound bank loaded into your po and make sure this note is the same as your tonic note. Default pitch have the value
+equals to 50. -12 semitones pitch have the value equals to 10, +7 semitones pitch have the value equals to 74 e.t.c.
+
 That's it, have fun with your POs and never miss the right scale:-)
 
 ## Dependencies
@@ -121,8 +134,8 @@ You can use additional arguments for starting the app with specific options:
 1. tonic note (default is A)
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
-4. PO model UI(33/35/128) (default is 33)
-5. PO scale(major/minor/blues/arab) (default is Minor, option is applicable for PO-35/137 models only)
+4. PO model UI(32/33/35/128) (default is 33)
+5. PO scale(major/minor/blues/arab) (default is Minor, option is applicable for PO-32 & PO-35/137 models only)
 
 For example, starting the app with 'f majpe y 35 maj' arguments will start app with F Major Pentatonic setting, missing
 hanger option, PO-35 model UI and Major PO-35 device scale setting. Please make sure you separate arguments with space
