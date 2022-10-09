@@ -107,6 +107,9 @@ For selected tonic & scale it will show you a range of values (0..100), you migh
 sequence with pitch knob to get all possible notes in the selected scale. You will need to know the default note of the
 sound bank loaded into your po and make sure this note is the same as your tonic note. Default pitch have the value
 equals to 50. -12 semitones pitch have the value equals to 10, +7 semitones pitch have the value equals to 74 e.t.c.
+It is handy to use 2 apps launched with the same tonic & scale, but with different models, for example: po-32 & po-35.
+While pocket scale calc with po-35 model in use will show an actual scale and notes positions, another one with po-32
+model will show pitch value you should set to your sound bank to get each note from the scale.
 
 That's it, have fun with your POs and never miss the right scale:-)
 
