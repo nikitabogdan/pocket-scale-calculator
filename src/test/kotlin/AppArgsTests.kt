@@ -26,14 +26,14 @@ class AppArgsTests {
      */
     private fun PocketScaleCalculator.assertSettings(
         expectedScale: Scales = Scales.MINOR_NATURAL_MINOR,
-        expectedRootKey: String = Notes.A,
+        expectedTonic: String = Notes.A,
         expectedSnapOffHangerOption: Boolean = false,
         expectedPOModelOption: PocketOperators = PocketOperators.PO_33,
         expectedPOScaleOption: POScales = POScales.MINOR
 
     ) {
         assertEquals(expectedScale, this.scale)
-        assertEquals(expectedRootKey, this.rootKey)
+        assertEquals(expectedTonic, this.tonic)
         assertEquals(expectedSnapOffHangerOption, this.snapOffHanger)
         assertEquals(expectedPOModelOption, this.poModel)
         assertEquals(expectedPOScaleOption, this.poScale)
@@ -51,42 +51,42 @@ class AppArgsTests {
 
     @Test
     fun `Start app with 1 arg positive test`() {
-        val testRootKey = Notes.F_SHARP
-        PocketScaleCalculator(arrayOf(testRootKey)).executeInTestMode().assertSettings(expectedRootKey = testRootKey)
+        val testTonic = Notes.F_SHARP
+        PocketScaleCalculator(arrayOf(testTonic)).executeInTestMode().assertSettings(expectedTonic = testTonic)
     }
 
     @Test
     fun `Start app with 2 args positive test`() {
-        val testRootKey = Notes.B
+        val testTonic = Notes.B
         val testScale = Scales.MINOR_DORIAN
-        PocketScaleCalculator(arrayOf(testRootKey, testScale.scaleName)).executeInTestMode()
-            .assertSettings(expectedScale = testScale, expectedRootKey = testRootKey)
+        PocketScaleCalculator(arrayOf(testTonic, testScale.scaleName)).executeInTestMode()
+            .assertSettings(expectedScale = testScale, expectedTonic = testTonic)
     }
 
     @Test
     fun `Start app with 3 args positive test`() {
-        val testRootKey = Notes.B
+        val testTonic = Notes.B
         val testScale = Scales.MINOR_DORIAN
         val testSnapOffHanger = YES_SHORTCUT
-        PocketScaleCalculator(arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger)).executeInTestMode()
+        PocketScaleCalculator(arrayOf(testTonic, testScale.scaleName, testSnapOffHanger)).executeInTestMode()
             .assertSettings(
                 expectedScale = testScale,
-                expectedRootKey = testRootKey,
+                expectedTonic = testTonic,
                 expectedSnapOffHangerOption = true
             )
     }
 
     @Test
     fun `Start app with 4 args positive test`() {
-        val testRootKey = Notes.B
+        val testTonic = Notes.B
         val testScale = Scales.MINOR_DORIAN
         val testSnapOffHanger = YES_SHORTCUT
         val poModel = PocketOperators.PO_35
         PocketScaleCalculator(
-            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.model)
+            arrayOf(testTonic, testScale.scaleName, testSnapOffHanger, poModel.model)
         ).executeInTestMode().assertSettings(
             expectedScale = testScale,
-            expectedRootKey = testRootKey,
+            expectedTonic = testTonic,
             expectedSnapOffHangerOption = true,
             expectedPOModelOption = poModel
         )
@@ -94,16 +94,16 @@ class AppArgsTests {
 
     @Test
     fun `Start app with 5 args positive test`() {
-        val testRootKey = Notes.E
+        val testTonic = Notes.E
         val testScale = Scales.ARAB
         val testSnapOffHanger = YES_SHORTCUT
         val poModel = PocketOperators.PO_35
         val poScale = POScales.ARAB
         PocketScaleCalculator(
-            arrayOf(testRootKey, testScale.scaleName, testSnapOffHanger, poModel.model, poScale.scaleName)
+            arrayOf(testTonic, testScale.scaleName, testSnapOffHanger, poModel.model, poScale.scaleName)
         ).executeInTestMode().assertSettings(
             expectedScale = testScale,
-            expectedRootKey = testRootKey,
+            expectedTonic = testTonic,
             expectedSnapOffHangerOption = true,
             expectedPOModelOption = poModel,
             expectedPOScaleOption = poScale
@@ -113,18 +113,18 @@ class AppArgsTests {
     @Disabled
     @Test
     fun `Start app with empty arg negative test`() {
-        val testRootKey = ""
-        PocketScaleCalculator(arrayOf(testRootKey)).executeInTestMode()
+        val testTonic = ""
+        PocketScaleCalculator(arrayOf(testTonic)).executeInTestMode()
         // need to figure out how to test error output from console
-        // .assertSettings(expectedRootKey = testRootKey)
+        // .assertSettings(expectedTonic = testTonic)
     }
 
     @Disabled
     @Test
     fun `Start app with wrong arg negative test`() {
-        val testRootKey = "wrongNote"
-        PocketScaleCalculator(arrayOf(testRootKey)).executeInTestMode()
+        val testTonic = "wrongNote"
+        PocketScaleCalculator(arrayOf(testTonic)).executeInTestMode()
         // need to figure out how to test error output from console
-        // .assertEquals(testRootKey, it.rootKey)
+        // .assertEquals(expectedTonic, it.testTonic)
     }
 }
