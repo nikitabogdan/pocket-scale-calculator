@@ -11,7 +11,7 @@ fun IntArray.transpose(semitones: Int) = IntArray(size) { PO_NOTES_BUTTONS_COUNT
 
 fun Int.octaveDown() = this + PO_BUTTONS_TO_OCTAVE_DOWN
 
-fun Int.getListOfRootKeyIndexesForBothOctaves() = listOf(this, this.octaveDown())
+fun Int.getListOfTonicIndexesForBothOctaves() = listOf(this, this.octaveDown())
 
 fun Int.getListOfOutOfScaleIndexesForBothOctaves() = listOf(this, this.octaveDown())
 
@@ -38,8 +38,8 @@ fun String.transposeOctave(semitones: Int): Int {
 }
 
 fun PocketScaleCalculator.transposeNote(semitones: Int, withOctave: Boolean = true) =
-    "${notesOrder[(notesOrder.indexOf(this.rootKey.dropOctave().uppercase()) + semitones).mod(notesOrder.size)]}${
-        if (withOctave) this.rootKey.transposeOctave(semitones) else ""
+    "${notesOrder[(notesOrder.indexOf(this.tonic.dropOctave().uppercase()) + semitones).mod(notesOrder.size)]}${
+        if (withOctave) this.tonic.transposeOctave(semitones) else ""
     }"
 
 fun PocketScaleCalculator.transposeNotesGroup() =
@@ -48,8 +48,8 @@ fun PocketScaleCalculator.transposeNotesGroup() =
             it[this.scale.transposeDiagram.indexOf(element)] =
                 if (this.scale.transposeDiagram.indexOf(element) in this.scale.outOfScaleKeyIndexes) {
                     this.convertNotePlaceholder(semitones = element, outOfScale = true)
-                } else if (this.scale.transposeDiagram.indexOf(element) in this.scale.rootKeyIndexes) {
-                    this.convertNotePlaceholder(semitones = element, root = true)
+                } else if (this.scale.transposeDiagram.indexOf(element) in this.scale.tonicKeyIndexes) {
+                    this.convertNotePlaceholder(semitones = element, tonic = true)
                 } else {
                     this.convertNotePlaceholder(semitones = element)
                 }

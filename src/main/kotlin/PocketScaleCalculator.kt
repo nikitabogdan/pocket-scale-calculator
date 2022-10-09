@@ -25,9 +25,9 @@ import constants.supportKeywordsList
 import methods.dropOctave
 import methods.getPOModelOption
 import methods.getPOScaleOption
-import methods.getRootKey
 import methods.getScale
 import methods.getSnapOffHangerOption
+import methods.getTonic
 import methods.hasText
 import methods.printAbout
 import methods.printCalculations
@@ -45,7 +45,7 @@ import types.Scales
 import kotlin.system.exitProcess
 
 class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
-    var rootKey = Notes.A
+    var tonic = Notes.A
     var scale = Scales.MINOR_NATURAL_MINOR
     var snapOffHanger = false
     var poModel = PocketOperators.PO_33
@@ -58,7 +58,7 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
         while (true) {
             printInputMessage(DEFAULT_INPUT_MESSAGE)
             val inputArgs = readln().split(ARGS_SEPARATOR).toTypedArray()
-            when (inputArgs[ArgsOrder.ROOT_KEY_OR_COMMAND_NAME].lowercase()) {
+            when (inputArgs[ArgsOrder.TONIC_OR_COMMAND_NAME].lowercase()) {
                 in helpKeywordsList -> printDescription()
                 in optionsKeywordsList -> setOptions()
                 in scalesKeywordsList -> printScales()
@@ -66,7 +66,7 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
                 in supportKeywordsList -> printSupport()
                 in exitKeywordsList -> terminate()
                 else -> {
-                    this.getRootKey(inputArgs)
+                    this.getTonic(inputArgs)
                         .getScale(inputArgs)
                     checkAndCalculate()
                 }
@@ -78,7 +78,7 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
         this.getSnapOffHangerOption(appArgs)
             .getPOModelOption(appArgs)
             .getPOScaleOption(appArgs)
-            .getRootKey(appArgs)
+            .getTonic(appArgs)
             .getScale(appArgs)
     }
 
@@ -88,11 +88,11 @@ class PocketScaleCalculator(private val appArgs: Array<String>? = null) {
                 this.printCalculations(it)
             }
         } else {
-            printErrorMessage(prepareUnrecognisedInputErrorMessage(rootKey))
+            printErrorMessage(prepareUnrecognisedInputErrorMessage(tonic))
         }
     }
 
-    private fun validateUserInput() = notesOrder.indexOf(rootKey.dropOctave()) != -1
+    private fun validateUserInput() = notesOrder.indexOf(tonic.dropOctave()) != -1
 
     private fun setOptions() {
         printHeader(HEADER_OPTIONS)

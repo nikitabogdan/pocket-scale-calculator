@@ -20,9 +20,9 @@ import types.POScales
 import types.PocketOperators
 import types.Scales
 
-fun PocketScaleCalculator.getRootKey(args: Array<String>) = this.also {
-    this.rootKey = try {
-        args[ArgsOrder.ROOT_KEY_OR_COMMAND_NAME].uppercase()
+fun PocketScaleCalculator.getTonic(args: Array<String>) = this.also {
+    this.tonic = try {
+        args[ArgsOrder.TONIC_OR_COMMAND_NAME].uppercase()
     } catch (ignored: ArrayIndexOutOfBoundsException) {
         Notes.A
     }

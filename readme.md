@@ -59,7 +59,7 @@ ancient-looking desktop console version with pocket operator vibes, so here we a
 
 ## v0.5
 
-* Added init app arguments: root key & scale
+* Added init app arguments: tonic & scale
 * Added support for basic Minor scales: Major Natural / Major Harmonic / Minor Natural / Minor Harmonic
 
 ## General info
@@ -87,11 +87,11 @@ Supported scales for PO-35/137 with Major scale setting:
 
 PO-35/137 Blues & Arab scale settings are now supported as well.
 
-To use app please type root key & desired scale (for example: F Blues) and press enter. Found scale name will appear on
+To use app please type tonic key & desired scale (for example: F Blues) and press enter. Found scale name will appear on
 the second line of the little ascii po display. The scale itself will be shown on the ascii pocket operator note
 buttons. Sample key for the found scale will be shown on the third line of ascii po display. This is the sample note you
-should load into your PO to use this scale. Start your melody from the root note marked as [] and avoid using out of
-scale notes marked as --. Also, the first line of ascii pocket operator display is showing your current po scale
+should load into your PO to use this scale. Play your melody using buttons with note keys and avoid using out of
+scale buttons marked as --. Also, the first line of ascii pocket operator display is showing your current po scale
 setting. To change this and other settings such as 'snap-off hanger' option and PO model, please use 'options' command
 and follow menu tips.
 
@@ -118,7 +118,7 @@ you need to fix jar file location for the CommandString key, first.
 
 You can use additional arguments for starting the app with specific options:
 
-1. root key note (default is A)
+1. tonic note (default is A)
 2. scale (default is Minor)
 3. snap off hanger(y/n) (default is n)
 4. PO model UI(33/35/128) (default is 33)
