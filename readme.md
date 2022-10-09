@@ -9,16 +9,16 @@ available settings and scales.
 
 <img width="600" alt="terminal profile icon compact" src="https://raw.githubusercontent.com/nikitabogdan/pocket-scale-calculator/main/terminal%20profile%20icon%20compact.png">
 
-## v0.93
+## v0.9.3
 
 * Reused correct tonic key definition across the app (root key -> tonic)
 * Added support for po-32 Tonic model.
 
-## v0.92
+## v0.9.2
 
 * Added support for po-128 Megaman model.
 
-## v0.9
+## v0.9.1
 
 * Added missing scales for po-35/137 models (Blues & Arab)
 * Modified & added tests to handle additional poScale argument
@@ -71,6 +71,16 @@ available settings and scales.
 
 ## General info
 
+To use app please type tonic key & desired scale (for example: F Blues) and press enter. Found scale name will appear on
+the second line of the little ascii po display. The scale itself will be shown on the ascii pocket operator note
+buttons. Sample key for the found scale will be shown on the third line of ascii po display. This is the sample note you
+should load into your PO to use this scale. Play your melody using buttons with note keys and avoid using out of
+scale buttons marked as --. Also, the first line of ascii pocket operator display is showing your current po scale
+setting. To change this and other settings such as 'snap-off hanger' option and PO model, please use 'options' command
+and follow menu tips.
+
+### Scales
+
 Supported scales for PO-128, PO-33/133 & PO-35/137 with Minor scale setting:
 
 * Minor (Natural, Harmonic & Pentatonic)
@@ -94,24 +104,22 @@ Supported scales for PO-35/137 with Major scale setting:
 
 PO-35/137 Blues & Arab scale settings are now supported as well.
 
-To use app please type tonic key & desired scale (for example: F Blues) and press enter. Found scale name will appear on
-the second line of the little ascii po display. The scale itself will be shown on the ascii pocket operator note
-buttons. Sample key for the found scale will be shown on the third line of ascii po display. This is the sample note you
-should load into your PO to use this scale. Play your melody using buttons with note keys and avoid using out of
-scale buttons marked as --. Also, the first line of ascii pocket operator display is showing your current po scale
-setting. To change this and other settings such as 'snap-off hanger' option and PO model, please use 'options' command
-and follow menu tips.
+### PO-32 sound bank pitch mode
 
 If you would like to calculate scales for PO-32, the app will work in quite other way.
 For selected tonic & scale it will show you a range of values (0..100), you might program your single sound bank in
 sequence with pitch knob to get all possible notes in the selected scale. You will need to know the default note of the
 sound bank loaded into your po and make sure this note is the same as your tonic note. Default pitch have the value
 equals to 50. -12 semitones pitch have the value equals to 10, +7 semitones pitch have the value equals to 74 e.t.c.
+Full list of pitch shifts could be found here: 
+
+<img width="386" alt="Screenshot 2022-10-09 at 12 30 42" src="https://user-images.githubusercontent.com/107914638/194773139-54ca943f-fcbd-4afb-bf49-6837473493a9.png">
+
 It is handy to use 2 apps launched with the same tonic & scale, but with different models, for example: po-32 & po-35.
 While pocket scale calc with po-35 model in use will show an actual scale and notes positions, another one with po-32
 model will show pitch value you should set to your sound bank to get each note from the scale.
 
-That's it, have fun with your POs and never miss the right scale:-)
+<img width="772" alt="Screenshot 2022-10-09 at 20 24 12" src="https://user-images.githubusercontent.com/107914638/194772807-07308578-20ce-4ed1-9a5e-654667f9976a.png">
 
 ## Dependencies
 
@@ -130,7 +138,7 @@ MacOS users also might set their terminal profile to have a shortcut for the app
 example.terminal' file at the root of the project) with specific window resolution & settings set. To use shared profile
 you need to fix jar file location for the CommandString key, first.
 
-## Run with arguments
+## Arguments
 
 You can use additional arguments for starting the app with specific options:
 
@@ -144,10 +152,13 @@ For example, starting the app with 'f majpe y 35 maj' arguments will start app w
 hanger option, PO-35 model UI and Major PO-35 device scale setting. Please make sure you separate arguments with space
 button.
 
-## App commands
+## Commands
 
 * "", "help", "tutorial", "description" - print help section
 * "options", "preferences" - access options menu
 * "scales", "list" - print full list of supported scales & shortcuts section
 * "about", "info" - print additional app info section
 * "exit", "quit", "off", "terminate" - exit app
+
+### That's it, have fun with your POs and never miss the right scale:-)
+
