@@ -80,7 +80,7 @@ val DESCRIPTION_MESSAGE_TEXT =
             "'scales' – get full list of supported scales; " +
             "'info' – more info/about section; 'off' – exit app;\n\n" +
             "To start app with specific default scale and options please use following arguments list: " +
-            "1:tonic, 2:scale, 3:snap off hanger (y/n), 4:PO model (33/35+. For example: F MajP Y 35 " +
+            "1:tonic, 2:scale, 3:snap off hanger (y/n), 4:PO model (32/33/35/128. For example: F MajP Y 35 " +
             "will start app with F Major Pentatonic setting, missing hanger option and PO-35 model UI. "
 
 val SCALES_MESSAGE_TEXT =
